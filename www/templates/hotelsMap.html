@@ -1,0 +1,38 @@
+<ion-view title="{{title}}" hide-back-button="false" id="page-hotels">
+    <ion-content padding="false" class="has-header demand-form">
+        <div style="display: flex; flex-direction: column; height: 100%;">
+            <div ng-if="banner != null">
+                <div ng-click="openBanner()" class="banner-block">
+                    <img ng-src="{{banner.image}}" class="banner-img">
+                </div>
+            </div>
+            <div id="hotels-map" style="z-index:10">
+                <div id="google-map" data-tap-disabled="true" style="height: 100%;">
+                  <ng-map zoom="{{zoomLevel}}" center="{{mapCenter}}" style="height:100%; width: 100%;">
+                      <marker ng-if="hotel.five_stars >= fiveStarsTop" ng-repeat="hotel in hotels" id="{{$index}}" title="{{hotel.name}}" position="{{hotel.latitude}},{{hotel.longitude}}"
+                          on-click="showItem(event, $index)" icon="{{getIcon(hotel)}}">
+                      </marker>
+                      <info-window id="details">
+                        <div ng-non-bindable="">
+                            <div id="siteNotice"></div>
+                            <div id="bodyContent">
+                                <h5>{{selectedHotel.name}}</h5>
+                                <div style="margin-bottom: 10px;">{{selectedHotel.address}}, {{selectedHotel.city}}, {{selectedHotel.country_name}}</div>
+                                <div><button ui-sref="veryHorse.detailsHotels({id: {{selectedHotel.id}}})" class="button button-assertive">{{'VIEW_DETAILS' | translate}}</button></div>
+                            </div>
+                        </div>
+                    </info-window>
+                  </ng-map>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="float-button" style="left: 15px"><!-- button-fab button-fab-bottom-right fab-fixed button-assertive pane -->
+        <button id="fab-profile" ui-sref="veryHorse.listHotels" class="button button-assertive" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+            <i class="icon ion-android-list"></i> {{'VIEW_LIST' | translate}}
+        </button>
+        <button id="fab-stars" class="button btn-primary" style="opacity: 1; transform: translate3d(0%, 0px, 0px); margin-left: 10px" ng-click="changeFiveStarsTop($event)">
+            <i class="icon ion-star"></i><i class="icon ion-star"></i><i class="icon ion-star"></i><i class="icon ion-star"></i><i class="icon ion-star"></i>
+        </button>
+    </div>
+</ion-view>

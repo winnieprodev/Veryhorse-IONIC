@@ -1,0 +1,225 @@
+<ion-view title="{{'NEW_DEMANDA' | translate}}" id="page-newDemand">
+	<ion-nav-buttons side="left">
+	    <button ng-show="step > 0 && step < 50" class="button button-clear" ng-click="goStepBack()" >
+	    	<i class="icon ion-ios-arrow-back"></i>
+	    </button>
+    </ion-nav-buttons>
+    <ion-content id="new-demand" padding="true" class="has-header demand-form">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<form class="vh-form">
+	    	<div class="form-section form-step" ng-style="{'display':step==0?'block':'none', 'z-index':step==0?'1':'0', 'pointer-events':step==0?'':'none'}">
+	    		<div class="form-90 demand-summary">
+		    		<label class="demand-title">{{'DIRECCION_RECOGIDA' | translate}} *:</label>
+		    		<input id="pickCityInput" 	type="text" name="pickCity" ng-model="formData.pickCity" placeholder=""  vs-google-autocomplete vs-city="pickAddress.city"  vs-country-short="pickAddress.country" vs-country="pickAddress.countryName" vs-post-code="pickAddress.cp" ng-focus="disableTap()" />
+		    		<div class="form-error" ng-style="{'display':formErrors.pickCity?'block':'none','line-height':formErrors.pickCity?'18px':'0'}">{{'OBLIGATORIO' | translate}}</div>
+
+		    		<label class="demand-title">{{'CODIGO2' | translate}}*:</label>
+		    		<input type="text" name="pickCP" 	ng-model="formData.pickCP" 	placeholder="" value="{{pickAddress.cp}}" />
+		    		<div class="form-error" ng-style="{'display':formErrors.pickCP?'block':'none','line-height':formErrors.pickCP?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+		    		<button ng-click="goToStep(1)" class="button button-wide button-vh" ng-disabled="step!==0">{{'SIGUIENTE' | translate}}</button>
+		    	</div>
+	    	</div>
+	    	<div class="form-section form-step" ng-style="{'display':step==1?'block':'none', 'z-index':step==1?'1':'0', 'pointer-events':step==1?'':'none'}">
+	    		<div class="form-90 demand-summary">
+		    		<label class="demand-title">{{'FECHA_R' | translate}}:</label>
+		    		<p>{{'ESCOJA' | translate}}:</p>
+		    		<br>
+
+		    		<button ng-click="selectPickDateMod('before')" 	class="button button-demand button-vh button-80 align-left" ng-disabled="step!==1">{{'ANTES_DIA' | translate}}...</button>
+		    		<button ng-click="selectPickDateMod('between')" class="button button-demand button-vh button-80 align-left" ng-disabled="step!==1">{{'ENTRE' | translate}}... {{'Y_EL' | translate}}...</button>
+		    		<button ng-click="selectPickDateMod('day')" 	class="button button-demand button-vh button-80 align-left" ng-disabled="step!==1">{{'EL_DIA' | translate}}...</button>
+		    		<button ng-click="selectPickDateMod('after')" 	class="button button-demand button-vh button-80 align-left" ng-disabled="step!==1">{{'DESPUES' | translate}}...</button>
+
+		    		<button ng-click="goToStep(0)" class="button button-wide button-vh-green-light button-80" ng-disabled="step!==1" style="margin-left: 10%;margin-top: 30px;">{{'ATRAS' | translate}}</button>
+		    	</div>
+	    	</div>
+	    	<div class="form-section form-step" ng-style="{'display':step==2?'block':'none', 'z-index':step==2?'1':'0', 'pointer-events':step==2?'':'none'}">
+	    		<div class="form-90 demand-summary">
+		    		<label class="demand-title">{{'FECHA_R' | translate}}:</label>
+		    		<p class="demand-title">{{'SELECCIONE2' | translate}}:</p>
+		    		<br>
+		    		<p>
+		    			<span class="demand-title" ng-if="formData.pickMod === 'before'">{{'ANTES_DIA' | translate}} </span>
+		    			<span class="demand-title"  ng-if="formData.pickMod === 'between'">{{'ENTRE' | translate}} </span>
+		    			<span class="demand-title" ng-if="formData.pickMod === 'day'">{{'EL_DIA' | translate}} </span>
+						<span class="demand-title" ng-if="formData.pickMod === 'after'">{{'DESPUES' | translate}} </span>
+						<span class="false-input" ng-click="openDatePicker('pickDayIniObj')">{{showPicDayIni ? (showPicDayIni | date:'dd MMMM yyyy') : 'Seleccione fecha*'}}</span>
+
+		    		</p>
+		    		<div class="form-error" ng-style="{'display':formErrors.pickDayIni?'block':'none','line-height':formErrors.pickDayIni?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+		    		<p>
+		    			<span  ng-if="formData.pickMod === 'between'">{{'Y_EL' | translate}}</span>
+		    			<span ng-if="formData.pickMod === 'between'" class="false-input" ng-click="openDatePicker('pickDayEndObj')">{{showPicDayEnd ? (showPicDayEnd | date:'dd MMMM yyyy') : 'Seleccione fecha*'}}</span>
+
+		    		</p>
+		    			<div class="form-error" ng-style="{'display':formErrors.pickDayEnd?'block':'none','line-height':formErrors.pickDayEnd?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+		    		<button ng-click="goToStep(4)" class="button button-wide button-vh" ng-disabled="step!==2">{{'SIGUIENTE' | translate}}</button>
+		    		<button ng-click="goToStep(1)" class="button button-wide button-vh-green-light" ng-disabled="step!==2">{{'ATRAS' | translate}}</button>
+		    	</div>
+	    	</div>
+
+	    	<div class="form-section form-step" ng-style="{'display':step==4?'block':'none', 'z-index':step==4?'1':'0', 'pointer-events':step==4?'':'none'}">
+	    		<div class="form-90 demand-summary">
+
+		    		<label class="demand-title">{{'DIRECCION_ENTREGA' | translate}}*:</label>
+		    		<input type="text" 		name="deliverCity" 		ng-model="formData.deliverCity" 		placeholder="" vs-google-autocomplete vs-city="deliverAddress.city" vs-country-short="deliverAddress.country" vs-country="deliverAddress.countryName" vs-post-code="deliverAddress.cp"/>
+		    		<div class="form-error" ng-style="{'display':formErrors.deliverCity?'block':'none','line-height':formErrors.deliverCity?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+		    		<label class="demand-title">{{'CODIGO2' | translate}}*:</label>
+		    		<input type="text" 		name="deliverCP" 	ng-model="formData.deliverCP" 	placeholder=""  value="{{deliverAddress.cp}}"/>
+		    		<div class="form-error" ng-style="{'display':formErrors.deliverCP?'block':'none','line-height':formErrors.deliverCP?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+		    		<button ng-click="goToStep(5)" class="button button-wide button-vh" ng-disabled="step!==4">{{'SIGUIENTE' | translate}}</button>
+		    		<button ng-click="goToStep(2)" class="button button-wide button-vh-green-light" ng-disabled="step!==4">{{'ATRAS' | translate}}</button>
+		    	</div>
+	    	</div>
+
+	    	<div class="form-section form-step" ng-style="{'display':step==5?'block':'none', 'z-index':step==5?'1':'0', 'pointer-events':step==5?'':'none'}">
+	    		<div class="form-90 demand-summary">
+		    		<label class="demand-title">{{'FECHA_E' | translate}}:</label>
+		    		<p>{{'ESCOJA' | translate}}:</p>
+		    		<br>
+		    		<button ng-click="selectDeliverDateMod('before')" 	class="button button-demand button-vh button-80 align-left" ng-disabled="step!==5">{{'ANTES_DIA' | translate}}...</button>
+		    		<button ng-click="selectDeliverDateMod('between')" 	class="button button-demand button-vh button-80 align-left" ng-disabled="step!==5">{{'ENTRE' | translate}}... {{'Y_EL' | translate}}...</button>
+		    		<button ng-click="selectDeliverDateMod('day')" 		class="button button-demand button-vh button-80 align-left" ng-disabled="step!==5">{{'EL_DIA' | translate}}...</button>
+		    		<button ng-click="selectDeliverDateMod('after')" 	class="button button-demand button-vh button-80 align-left" ng-disabled="step!==5">{{'DESPUES' | translate}}...</button>
+		    		<button ng-click="goToStep(4)" class="button button-wide button-vh-green-light button-80" ng-disabled="step!==5" style="margin-left: 10%;margin-top: 30px;">{{'ATRAS' | translate}}</button>
+		    	</div>
+	    	</div>
+
+	    	<div class="form-section form-step" ng-style="{'display':step==6?'block':'none', 'z-index':step==6?'1':'0', 'pointer-events':step==6?'':'none'}">
+	    		<div class="form-90 demand-summary">
+		    		<label class="demand-title">{{'FECHA_E' | translate}}:</label>
+		    		<p class="demand-title">{{'SELECCIONE2' | translate}}:</p>
+		    		<br>
+		    		<p>
+		    			<span  class="demand-title" ng-if="formData.deliverMod === 'before'">{{'ANTES_DIA' | translate}} </span>
+		    			<span class="demand-title" ng-if="formData.deliverMod === 'between'">{{'ENTRE' | translate}} </span>
+		    			<span class="demand-title" ng-if="formData.deliverMod === 'day'">{{'EL_DIA' | translate}} </span>
+						<span class="demand-title" ng-if="formData.deliverMod === 'after'">{{'DESPUES' | translate}} </span>
+						<span class="false-input" ng-click="openDatePicker('deliverDayIniObj')">{{showDelDayIni ? (showDelDayIni | date:'dd MMMM yyyy') : 'Seleccione fecha*'}}</span>
+
+		    		</p>
+					<div class="form-error" ng-style="{'display':formErrors.deliverDayIni?'block':'none','line-height':formErrors.deliverDayIni?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+		    		<p>
+		    			<span  ng-if="formData.deliverMod === 'between'">{{'EL_DIA' | translate}}</span>
+		    			<span ng-if="formData.deliverMod === 'between'" class="false-input" ng-click="openDatePicker('deliverDayEndObj')">{{showDelDayEnd ? (showDelDayEnd | date:'dd MMMM yyyy') : 'Seleccione fecha*'}}</span>
+
+		    		</p>
+		    		<div class="form-error" ng-style="{'display':formErrors.deliverDayEnd?'block':'none','line-height':formErrors.deliverDayEnd?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+		    		<button ng-click="goToStep(7)" class="button button-wide button-vh" ng-disabled="step!==6">{{'SIGUIENTE' | translate}}</button>
+		    		<button ng-click="goToStep(4)" class="button button-wide button-vh-green-light" ng-disabled="step!==6">{{'ATRAS' | translate}}</button>
+		    	</div>
+	    	</div>
+
+	    	<div class="form-section form-step" ng-style="{'display':step==7?'block':'none', 'z-index':step==7?'1':'0', 'pointer-events':step==7?'':'none'}" >
+
+	    		<div class="form-90 demand-summary" >
+		    		<label class="demand-title">{{'CANTIDAD' | translate}}:</label>
+		    		<input type="number" name="numHorses" ng-change="limitInputNumHorses()"	ng-model="formData.numHorses" 	placeholder="" value="{{'NUMERO_C' | translate}}*" />
+					<div class="form-error" ng-style="{'display':formErrors.numHorses?'block':'none','line-height':formErrors.numHorses?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+
+						<p class="demand-title">{{'MEDICINA' | translate}}</p>
+						<br>
+						<!--<div class="buttons" ng-controller="newDemandCtrl">-->
+						<div class="buttons">
+							<!-- <button ng-click="formData.special = true;" class="button button-vh button-inline button-sq" ng-class="{'off':!formData.special}">{{'SI' | translate}}</button>
+							<button ng-click="formData.special = false;" class="button button-vh button-inline button-sq" ng-class="{'off':formData.special}">NO</button> -->
+							<textarea rows="4" name="specialDesc" ng-model="formData.specialDesc" style="height:64px;opacity:1;margin-top: 10px;" ></textarea>
+							<!-- <input type="text" name="specialDesc" ng-model="formData.specialDesc" ng-style="{'height':formData.special?'34px':'0px', 'opacity':formData.special?'1':'0' }"/> -->
+						</div>
+						<hr>
+
+						<p class="demand-title">{{'EQUIPAJE2' | translate}}</p>
+						<br>
+						<div class="buttons">
+							<button ng-click="formData.lugage = true" class="button button-vh button-inline button-sq" ng-class="{'off':!formData.lugage}">{{'SI' | translate}}</button>
+							<button ng-click="formData.lugage = false" class="button button-vh button-inline button-sq" ng-class="{'off':formData.lugage}">NO</button>
+							<input type="text" name="lugageDesc" ng-model="formData.lugageDesc" ng-style="{'height':formData.lugage?'34px':'0px', 'opacity':formData.lugage?'1':'0' }"/>
+						</div>
+
+
+		    		<button ng-click="goToStep(8)" class="button button-wide button-vh" ng-disabled="step!==7">{{mensaje2}}</button>
+		    		<button ng-click="goToStep(6)" class="button button-wide button-vh-green-light" ng-disabled="step!==7">{{'ATRAS' | translate}}</button>
+		    	</div>
+	    	</div>
+
+
+	    	<div class="form-section form-step" ng-style="{'display':step==8?'block':'none', 'z-index':step==8?'1':'0', 'pointer-events':step==8?'':'none'}">
+
+	    		<div class="form-90 demand-summary">
+		    		<label class="demand-title">{{'CONFIRMAR3' | translate}}</label>
+		            <p>&nbsp;</p>
+
+                    <div id="google-map" data-tap-disabled="true">
+                    <ng-map zoom="4" center="40.416775,-3.703790" style="height:100%" disable-default-u-i="true" >
+                      <directions
+                        draggable="true"
+                        panel="directions-panel"
+                        travel-mode="DRIVING"
+                        unit-system="METRIC"
+                        origin="{{ dataCities.pickCity }}"
+                        destination="{{ dataCities.deliverCity }}">
+                      </directions>
+                    </ng-map>
+                  </div>
+                  <p>{{'DISTANCE' | translate}}: {{ map.directionsRenderers[0].directions.routes[0].legs[0].distance.text; }}</p>
+
+                <p>&nbsp;</p>
+		    		<p>
+		                <strong>{{'RECOGIDA' | translate}}:</strong> {{formData.pickCityName}}
+		    			<span ng-if="formData.pickMod == 'before'"> ({{'ANTES_DIA' | translate}} {{formData.pickDayIni | date:'dd-MM-yyyy'}})</span>
+		                <span ng-if="formData.pickMod == 'after'">  ({{'DESPUES' | translate}} {{formData.pickDayIni | date:'dd-MM-yyyy'}})</span>
+		                <span ng-if="formData.pickMod == 'day'">                  ({{formData.pickDayIni | date:'dd-MM-yyyy'}})</span>
+		                <span ng-if="formData.pickMod == 'between'">({{'ENTRE' | translate}}    {{formData.pickDayIni | date:'dd-MM-yyyy'}} {{'Y_EL' | translate}} {{formData.pickDayEnd | date:'dd-MM-yyyy'}})</span>
+		    		</p>
+		            <p>&nbsp;</p>
+		            <p>
+						<strong>{{'ENTREGA' | translate}}:</strong> {{formData.deliverCityName}}
+						<span ng-if="formData.deliverMod == 'before'"> ({{'ANTES_DIA' | translate}}   {{formData.deliverDayIni | date:'dd-MM-yyyy'}})</span>
+		                <span ng-if="formData.deliverMod == 'after'">  ({{'DESPUES' | translate}} {{formData.deliverDayIni | date:'dd-MM-yyyy'}})</span>
+		                <span ng-if="formData.deliverMod == 'day'">                ({{formData.deliverDayIni | date:'dd-MM-yyyy'}})</span>
+		                <span ng-if="formData.deliverMod == 'between'">({{'ENTRE' | translate}}    {{formData.deliverDayIni | date:'dd-MM-yyyy'}} {{'Y_EL' | translate}} {{formData.deliverDayEnd | date:'dd-MM-yyyy'}})</span>
+		    		</p>
+		            <p>&nbsp;</p>
+
+		    		<p><strong>{{'NUMERO_C' | translate}}</strong>: {{formData.numHorses}}</p>
+					<p>&nbsp;</p>
+		    		<p><strong>{{'EQUIPAJE' | translate}}</strong>: {{formData.lugage?'Sí':'No'}}</p>
+		    		<p ng-if="formData.lugage">{{formData.lugageDesc}}</p>
+		    		<p>&nbsp;</p>
+		    		<p ng-if="formData.specialDesc != ''"><strong>{{'TRATAMIENTO2' | translate}}</strong>:</p>
+		    		<p ng-if="formData.specialDesc != ''">{{formData.specialDesc}}</p>
+		    		<p>&nbsp;</p>
+
+
+		    			<!--<button ng-click="createDemand()" class="button button-wide button-vh" ng-disabled="step!==8">{{'CONFIRMAR4' | translate}}</button>-->
+
+						<button ng-click="createDemand()" class="button button-wide button-vh" ng-disabled="step!==8">{{mensaje3}}</button>
+		    			<button ng-click="goToStep(7)" class="button button-wide button-vh-green-light" ng-disabled="step!==8">{{'ATRAS' | translate}}</button>
+
+		    	</div>
+	    	</div>
+
+	    	<!--<div class="form-section form-step" ng-style="{'opacity':step==50?'1':'0', 'z-index':step==50?'1':'0', 'pointer-events':step==50?'':'none'}">-->
+	    	<div class="form-section form-step" ng-style="{'display':step==50?'block':'none', 'z-index':step==50?'1':'0', 'pointer-events':step==50?'':'none'}">
+	    		<div class="form-90" ng-if="formData.numHorses === 'mas_5'">
+					<p class="demand-title">{{'DESEO2' | translate}} <a href="tel:+34911309810">911 30 98 10</a> {{'HACERLO' | translate}}</p>
+					<p class="demand-title">{{'SALUDO' | translate}}.</p>
+					<button ui-sref="veryHorse.queHacerUser2" class="button button-wide button-vh" ng-disabled="step!==50">{{'ENVIAR3' | translate}}</button>
+	    		</div>
+	    		<div class="form-90" ng-if="formData.numHorses !== 'mas_5'">
+		    		<label class="demand-title"><strong>{{'DEMANDA2' | translate}}:</strong></label>
+		    		<p class="demand-title">{{'DEMANDA3' | translate}}.</p>
+					<button ui-sref="veryHorse.queHacerUser2" class="button button-wide button-vh" ng-disabled="step!==50">{{'FINALIZAR' | translate}}</button>
+		    	</div>
+	    	</div>
+    	</form>
+    </ion-content>
+</ion-view>

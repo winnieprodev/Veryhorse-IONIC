@@ -1,0 +1,23 @@
+<ion-view title="{{'COMPARTIR' | translate}}" hide-back-button="true" id="page-register">
+    <ion-content id="emergencias" padding="true" class="has-header">
+    	<div class="form-section" ng-style="{'opacity':contactSent?'0':'1'}">
+	    	<p>{{'RELLENE' | translate}}</p>
+	    	<form class="vh-form">
+	    		<label>{{'MI' | translate}} {{'NOMBRE' | translate}}</label>
+	    		<input type="text" 	name="nombre" 	ng-model="formData.nombre" Placeholder="" />
+	    		<label>{{'MI' | translate}} {{'EMAIL' | translate}}</label>
+	    		<input type="email" name="telefono" ng-model="formData.email" placeholder="" />
+	    		<label>{{'NOMBRE_MI_AMIGO' | translate}}</label>
+	    		<input type="text" 	name="friend" 	ng-model="formData.friend" placeholder="" />
+	    		<label>{{'EMAIL_MI_AMIGO' | translate}}</label>
+	    		<input type="email" name="telefono" ng-model="formData.friendEmail" placeholder="" />
+	    		<div class="form-error" ng-style="{'opacity':formErrors?'1':'0'}" >{{'OBLIGATORIO2' | translate}}</div>
+	    		<button ng-click="send()" class="button button-vh">{{'ENVIAR2' |translate}}</button>
+	    	</form>
+    	</div>
+    	<div class="form-section" ng-style="{'opacity':contactSent?'1':'0', 'z-index':contactSent?'2':'-1'}">
+    		<p>{{'MENSAJE_ENVIADO_EXITOSAMENTE' | translate}}</p>
+    		<p>{{'GRACIAS' |translate}} Very Horse</p>
+    	</div>
+    </ion-content>
+</ion-view>

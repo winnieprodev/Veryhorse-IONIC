@@ -1,0 +1,17 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+node_modules/
+platforms/
+plugins/
+www/lib
+ionic.app.min.css
+ionic.app.css
+npm-debug.log.1537710777
+npm-debug.log.2407285883
+npm-debug.log.2598799575
+npm-debug.log.3155611614
+.DS_Store
+resources/ios/
+resources/android/
+package-lock.json

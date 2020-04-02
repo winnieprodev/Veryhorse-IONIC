@@ -1,0 +1,29 @@
+<ion-view title="{{'EMERGENCIA' | translate}}" id="page4">
+    <ion-content id="emergencias" padding="true" class="has-header">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<div class="form-section" ng-style="{'opacity':contactSent?'0':'1'}">
+	    	<p>{{'RELLENE2' |translate}}.</p>
+	    	<form class="vh-form">
+	    		<label>{{'NOMBRE' | translate}}</label>
+	    		<input type="text" 	name="nombre" 	ng-model="formData.nombre" 	placeholder="" />
+	    		<label>{{'TELEFONO_M' | translate}}</label>
+	    		<input type="text" name="telefono" ng-model="formData.telefono" placeholder="" />
+	    		<label>{{'ASUNTO' | translate}}</label>
+	    		<input type="text" 	name="asunto" 	ng-model="formData.asunto" 	placeholder="" />
+	    		<label>{{'EXPLICAR' | translate}}</label>
+	    		<textarea name="explicacion" ng-model="formData.explicacion" placeholder="" ></textarea>
+	    		<div class="form-error" ng-style="{'opacity':formErrors?'1':'0'}" >{{'OBLIGATORIO2' | translate}}</div>
+	    		<button ng-click="send()" class="button button-vh">{{'ENVIAR2' | translate}}</button>
+	    	</form>
+	    	<p>{{'CONTACTO_30MIN' | translate}} <a href="tel:911309810" launch-external="yes">911 30 98 10</a></p>
+    	</div>
+    	<div class="form-section" ng-style="{'opacity':contactSent?'1':'0', 'z-index':contactSent?'2':'-1'}">
+    		<p>{{'MENSAJE_ENVIADO_EXITOSAMENTE' | translate}}.</p>
+			<p>{{'CONTACTO_30MIN' | translate}}  <a href="tel:911309810" launch-external="yes">911 30 98 10</a></p>
+    	</div>
+    </ion-content>
+</ion-view>

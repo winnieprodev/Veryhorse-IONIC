@@ -1,0 +1,82 @@
+<ion-view title="{{demandTitle}}" hide-back-button="false" id="page-newDemand">
+    <ion-content id="new-demand" padding="true" class="has-header demand-form">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+		<div class="form-90 demand-summary" ng-if="proposal != null">
+
+    		<p class="demand-title">{{'RECOGIDA' | translate}}</p>
+            
+    		<p ng-if="proposal.altPicDay && proposal.altPicDay !== null">{{proposal.altPicDay | date:'dd-MM-yyyy'}} - {{demand.pickCityName}}, {{demand.pickCP}} ({{demand.pickCountryName}})</p>
+            <p ng-if="!proposal.altPicDay || proposal.altPicDay === null">
+                <span ng-if="demand.pickMod == 'before'"> {{'ANTES_DIA' | translate}}     {{demand.pickDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.pickMod == 'after'">  {{'DESPUES' | translate}}   {{demand.pickDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.pickMod == 'day'">    {{demand.pickDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.pickMod == 'between'">{{'ENTRE' | translate}}      {{demand.pickDayIni | date:'dd-MM-yyyy'}} {{'Y_EL' | translate}} {{demand.pickDayEnd | date:'dd-MM-yyyy'}}</span>
+                - {{demand.pickCityName}}, {{demand.pickCP}} ({{demand.pickCountryName}})
+            </p>
+            
+            <p class="demand-title">{{'ENTREGA' | translate}}</p>
+            <p ng-if="proposal.altDelDay && proposal.altDelDay !== null">{{proposal.altDelDay | date:'dd-MM-yyyy'}} - {{demand.deliverCityName}}, {{demand.deliverCP}} ({{demand.deliverCountryName}})</p>
+            <p ng-if="!proposal.altDelDay || proposal.altDelDay === null">
+                <span ng-if="demand.deliverMod == 'before'"> {{'ANTES_DIA' | translate}}   {{demand.deliverDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.deliverMod == 'after'">  {{'DESPUES' | translate}}  {{demand.deliverDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.deliverMod == 'day'">  {{demand.deliverDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.deliverMod == 'between'"> {{'ENTRE' | translate}}   {{demand.deliverDayIni | date:'dd-MM-yyyy'}} {{'Y_EL' | translate}} {{demand.deliverDayEnd | date:'dd-MM-yyyy'}}</span>
+                - {{demand.deliverCityName}}, {{demand.deliverCP}} ({{demand.deliverCountryName}})
+            </p>
+            <p> &nbsp; </p>
+            <p><span class="demand-title">{{'NUMERO_C2' | translate}}: </span> {{demand.numHorses}}</p>
+            <p class="demand-title">{{'TRATAMIENTO' | translate}}</p>
+            <p> {{demand.specialDesc?demand.specialDesc:'No'}}</p>
+            
+            <!-- <p> {{demand.special?'':'No'}}</p>
+            <p ng-if="demand.special">{{demand.specialDesc}}</p> -->
+
+            <p class="demand-title">{{'EQUIPAJE' | translate}}</p>
+            <p> {{demand.lugage?'':'No'}}</p>
+            <p ng-if="demand.lugage">{{demand.lugageDesc}}</p>
+
+            <br>
+            <hr class="demand-form">
+
+            <p class="demand-title">{{'PRECIO5' | translate}}</p>
+            <p>{{proposal.amount | demandAmount}}€</p>
+
+            <p class="demand-title">{{'PRECIO2' | translate}}</p>
+            <p>{{proposal.amount | payAmount}}€</p>
+            <p class="small">{{'PROPOSAL_DISCLOUSURE' | translate }}.</p>
+            
+
+            <p class="demand-title">{{'VEHICULO' | translate}}</p>
+            <p ng-if="proposal.vehicle" class="vehicle-proposal" ng-style="{'background-image':'url(img/vehiculos/vehiculo_'+proposal.vehicle+'.png)'}" ></p>
+
+            <p class="demand-title">{{'VALOR_TRANS2' | translate}}</p>
+            <p><ionic-ratings ratingsobj='ratingsObject' index='0' style="font-size: 25px;"></ionic-ratings> </p><!--({{transportista.valoraciones?transportista.valoraciones.length:0}} {{'VALORACION' | translate}})-->
+            
+            <p ng-if="transportista.description">{{(lang == 'en' && transportista.description.en) ? transportista.description.en : transportista.description.es}}</p>
+            <p class="demand-title">{{'ASK_CARRIER' | translate}}</p>
+            <textarea ng-model="ask.description" class="form-control" style="margin-top: 10px;margin-bottom: 0px;"></textarea>
+            <div style="width: 100%;display: flex;background-color: white;">
+                <button class="btn btn-danger" style="margin-left: auto;" ng-click="send_email()">{{'Send_Consult' | translate}}</button>
+            </div>
+            <div ng-if="demand.status === 'pending'">
+                <p class="small" style="margin-top: 15px;font-size: 15px;"><input type="checkbox" ng-model="formData.tos"/>{{'LEIDO' | translate}} <a href="#" ng-click="showCondiciones()">{{'CONDICIONES_GENERAL_CONTRATACION' | translate }}</a></p>
+                <div class="form-error" ng-style="{'opacity':formErrors.tos?'1':'0'}" style="margin-top: 10px;">{{'ACEPTAR_CONDICIONES' | translate}}</div>
+                
+                <div ng-if="!paySuccess">
+                    <button ng-click="reservar()" class="button button-wide button-vh">{{'RESERVAR' | translate}}</button>
+                    <button ng-click="reservarPaypal()" class="button button-wide button-vh">{{'RESERVAR_PAYPAL' | translate}}</button>
+                    <button ng-click="desestimar()" class="button button-wide button-vh">{{'DESESTIMAR_QUOTE' | translate}}</button>
+                </div>
+            </div>
+    	</div>
+    </ion-content>
+</ion-view>
+
+
+
+
+

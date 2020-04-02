@@ -1,0 +1,35 @@
+<ion-view title="" hide-back-button="true" id="page-register">
+    <ion-content id="que-hacer" padding="true" class="has-header">
+    	<div class="form-70">
+    		<div class="form-text-big">Seleccione idioma <br/> Select language</div>
+    		<div class="buttons">
+				<button ng-click="selectLang('es')" class="button button-img button-inline">
+                    <img src="img/bandera_es.png" ng-class="{'img-button-on':!languageSelected || lang !== 'es'}"/>
+                    <img src="img/bandera_cargando_es.png" ng-class="{'img-button-on':languageSelected && lang=='es'}"/>
+                </button>
+                <button ng-click="selectLang('en')" class="button button-img button-inline">
+                    <img src="img/bandera_en.png" ng-class="{'img-button-on':!languageSelected || lang !== 'en'}"/>
+                    <img src="img/bandera_cargando_en.png" ng-class="{'img-button-on':languageSelected && lang=='en'}"/>
+                </button>
+                <button ng-click="selectLang('de')" class="button button-img button-inline">
+                    <img src="img/bandera_de.png" ng-class="{'img-button-on':!languageSelected || lang !== 'de'}"/>
+                    <img src="img/bandera_cargando_en.png" ng-class="{'img-button-on':languageSelected && lang=='de'}"/>
+                </button>
+			</div>
+            <div class="buttons">
+				<button ng-click="selectLang('fr')" class="button button-img button-inline">
+                    <img src="img/bandera_fr.png" ng-class="{'img-button-on':!languageSelected || lang !== 'fr'}"/>
+                    <img src="img/bandera_cargando_es.png" ng-class="{'img-button-on':languageSelected && lang=='fr'}"/>
+                </button>
+                <button ng-click="selectLang('nl')" class="button button-img button-inline">
+                    <img src="img/bandera_nl.png" ng-class="{'img-button-on':!languageSelected || lang !== 'nl'}"/>
+                    <img src="img/bandera_cargando_en.png" ng-class="{'img-button-on':languageSelected && lang=='nl'}"/>
+                </button>
+                <button ng-click="selectLang('it')" class="button button-img button-inline">
+                    <img src="img/bandera_it.png" ng-class="{'img-button-on':!languageSelected || lang !== 'it'}"/>
+                    <img src="img/bandera_cargando_en.png" ng-class="{'img-button-on':languageSelected && lang=='it'}"/>
+                </button>
+			</div>
+    	</div>
+    </ion-content>
+</ion-view>

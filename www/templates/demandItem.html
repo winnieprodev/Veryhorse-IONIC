@@ -1,0 +1,199 @@
+<ion-view title="{{demandTitle}}" hide-back-button="false" id="page-newDemand">
+    <ion-content id="new-demand" padding="true" class="has-header demand-form">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    <div id="google-map" data-tap-disabled="true">
+      <ng-map zoom="{{getMapZoom()}}" center="{{getMapCenter()}}" style="height:100%" disable-default-u-i="true" ng-style="{'display':showMap?'block':'none'}" >
+        <directions
+          draggable="true"
+          panel="directions-panel"
+          travel-mode="DRIVING"
+          unit-system="METRIC"
+          origin="{{ demand.pickCity }}"
+          destination="{{ demand.deliverCity }}">
+        </directions>
+        <marker 
+            ng-if="shouldRenderAltPath()"
+            position="{{ demand.pickCity }}"
+            centered="true"
+            label="'A'"
+        ></marker>
+        <marker 
+            ng-if="shouldRenderAltPath()"
+            position="{{ demand.deliverCity }}"
+            centered="true"
+            label="'B'"
+        ></marker>
+        <shape 
+            ng-if="shouldRenderAltPath()"
+            name="polyline" 
+            path="{{getMarkersPath()}}"
+            geodesic="true"
+            stroke-color="#3c8cd9"
+            stroke-opacity="1.0"
+            stroke-weight="2">
+        </shape>
+      </ng-map>
+    </div>
+    <p>{{'DISTANCE' | translate}}: {{ 
+        shouldRenderAltPath() ? 
+        getDistance().toLocaleString()+'km' : 
+        map.directionsRenderers[0].directions.routes[0].legs[0].distance.text; }}</p>
+
+		<div class="form-90 demand-summary" ng-if="demand != null">
+        <p class="demand-title">{{'RECOGIDA' | translate}}</p>
+    		<p>
+                <span ng-if="demand.pickMod == 'before'"> {{'ANTES_DIA' | translate}}     {{demand.pickDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.pickMod == 'after'">  {{'DESPUES' | translate}}   {{demand.pickDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.pickMod == 'day'">    {{demand.pickDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.pickMod == 'between'">{{'ENTRE' | translate}}      {{demand.pickDayIni | date:'dd-MM-yyyy'}} {{'Y_EL' | translate}} {{demand.pickDayEnd | date:'dd-MM-yyyy'}}</span>
+                - {{demand.pickCityName}}, {{demand.pickCP}} ({{demand.pickCountryName}})
+
+    		</p>
+
+            <p class="demand-title">{{'ENTREGA' | translate}}</p>
+            <p>
+
+				<span ng-if="demand.deliverMod == 'before'"> {{'ANTES_DIA' | translate}}   {{demand.deliverDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.deliverMod == 'after'">  {{'DESPUES' | translate}}  {{demand.deliverDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.deliverMod == 'day'">  {{demand.deliverDayIni | date:'dd-MM-yyyy'}}</span>
+                <span ng-if="demand.deliverMod == 'between'"> {{'ENTRE' | translate}}   {{demand.deliverDayIni | date:'dd-MM-yyyy'}} {{'Y_EL' | translate}} {{demand.deliverDayEnd | date:'dd-MM-yyyy'}}</span>
+                - {{demand.deliverCityName}}, {{demand.deliverCP}} ({{demand.deliverCountryName}})
+
+    		</p>
+            <p>&nbsp;</p>
+
+            <p><span class="demand-title">{{'NUMERO_C2' | translate}}: </span> {{demand.numHorses}}</p>
+
+            <p class="demand-title">{{'TRATAMIENTO' | translate}}</p>
+            <p> {{demand.specialDesc?demand.specialDesc:'No'}}</p>
+
+            <!--
+            <p> {{demand.special?'':'No'}}</p>
+            <p ng-if="demand.special">{{demand.specialDesc}}</p> -->
+
+            <p class="demand-title">{{'EQUIPAJE' | translate}}</p>
+            <p> {{demand.lugage?'':'No'}}</p>
+            <p ng-if="demand.lugage">{{demand.lugageDesc}}</p>
+
+    		<div class="proposal" ng-if="isTrans() && decideShow && demand.status==='pending'" style="position:relative;">
+                <p class="center" ng-if="myProposal && !proposalSent" style="margin-top: 50px;">{{'PROPUESTA_YA_ENVIADA' | translate}}</p>
+                <div class="form-section form-step" ng-style="{'display':!proposalSent?'block':'none', 'z-index':!proposalSent?'1':'0'}">
+                    <div class="dark-green-title" style="margin-bottom: 3px;">{{'COTIZACION' | translate}}</div>
+                    <input type="number" name="proposal" ng-model="proposal.amount" placeholder="" />
+                    <div class="form-hint">({{'TAXES_INCLUDED' | translate}})</div>
+                    <div>
+                        <label style="margin:15px 0"><input type="radio" name="triptype" ng-model="proposal.triptype" value="one_way_trip" style="width: auto" /> {{'TRIP_ONE_WAY' | translate}}</label>
+                        <label style="margin:15px 0"><input type="radio" name="triptype" ng-model="proposal.triptype" value="round_trip" style="width: auto" /> {{'TRIP_ROUND' | translate}}</label>
+                    </div>
+                    <div class="form-error" ng-style="{'display':proposalAmountError?'block':'none','line-height':formErrors.proposalAmountError?'18px':'0', 'margin-top':'10px'}" >{{'ONLY_NUMBERS' | translate}}</div>
+                    
+                    <div class="dark-green-title" style="margin-bottom: 3px;">{{'VEHICULO' | translate}}</div>
+                    <div class="vehicle-select-list" ng-class='{active:active}' ng-click="active=!active">
+                        <span ng-if="proposal.vehicle" ng-style="{'background-image':'url(img/vehiculos/vehiculo_'+proposal.vehicle+'.png)'}"></span>
+                        <ul class="options">
+                            <li class="select-list-option" ng-click="proposal.vehicle='1'; proposalVehicleError=false" ng-style="{'background-image':'url(img/vehiculos/vehiculo_1.png)'}"></li>
+                            <li class="select-list-option" ng-click="proposal.vehicle='2'; proposalVehicleError=false" ng-style="{'background-image':'url(img/vehiculos/vehiculo_2.png)'}"></li>
+                            <li class="select-list-option" ng-click="proposal.vehicle='3'; proposalVehicleError=false" ng-style="{'background-image':'url(img/vehiculos/vehiculo_3.png)'}"></li>
+                            <li class="select-list-option" ng-click="proposal.vehicle='4'; proposalVehicleError=false" ng-style="{'background-image':'url(img/vehiculos/vehiculo_4.png)'}"></li>
+                            <li class="select-list-option" ng-click="proposal.vehicle='5'; proposalVehicleError=false" ng-style="{'background-image':'url(img/vehiculos/vehiculo_5.png)'}"></li>
+                            <li class="select-list-option" ng-click="proposal.vehicle='6'; proposalVehicleError=false" ng-style="{'background-image':'url(img/vehiculos/vehiculo_6.png)'}"></li>
+                            <li class="select-list-option" ng-click="proposal.vehicle='7'; proposalVehicleError=false" ng-style="{'background-image':'url(img/vehiculos/vehiculo_7.png)'}"></li>
+                            <li class="select-list-option" ng-click="proposal.vehicle='8'; proposalVehicleError=false" ng-style="{'background-image':'url(img/vehiculos/vehiculo_8.png)'}"></li>
+                        </ul>
+                    </div>
+                    <div class="form-error" ng-style="{'display':proposalVehicleError?'block':'none','line-height':formErrors.proposalVehicleError?'18px':'0', 'margin-top':'15px'}" >{{'REQUIRED_VEHICLE' | translate}}</div>
+
+                    <div class="dark-green-title">{{'FECHA_A' | translate}}</div>
+                    <p style="margin: 15px 0 2px; color: #605e00;">{{'RECOGIDA' | translate}}:</p>
+                    <!-- <input type="text"      name="altPicDay"   ng-value="" readonly="readonly" ng-click="openDatePicker('pickDayIniObj')"/> -->
+                    <span class="false-input" ng-click="openDatePicker('pickDayIniObj')">{{showAltPicDay | date:'dd MMMM yyyy'}}</span>
+                    <p style="margin: 15px 0 2px; color: #605e00; ">{{'ENTREGA' | translate}}</p>
+                    <!-- <input type="text"      name="altDelDay"   ng-value="showAltDelDay | date:'dd MMMM yyyy'" readonly="readonly" ng-click="openDatePicker('pickDayEndObj')"/> -->
+                    <span class="false-input" ng-click="openDatePicker('pickDayEndObj')">{{showAltDelDay | date:'dd MMMM yyyy'}}</span>
+
+                    <!--<button ng-click="sendProposal(); cambiarMensaje()" class="button button-vh">{{'ENVIAR2' | translate}} <span ng-if="myProposal">{{'NUEVA' | translate}} </span>{{'COTIZACION' | translate}} // {{mensaje}} </button>-->
+
+                    <button ng-click="sendProposal(); cambiarMensaje()" class="button button-vh"> {{mensaje}} <span ng-if="myProposal">{{'NUEVA' | translate}} </span> </button>
+
+                    <!--<div ng-controller="loginCtrl">
+                        <h1>{{mensaje}}</h1>
+                        <button ng-click="cambiarMensaje()">{{mensaje}}</button>
+                    </div>-->
+
+
+                    <button ng-click="desestimar()" class="button button-vh">{{'DESESTIMAR' | translate}}</button>
+                    <button ng-if="myProposal" ng-click="deletequote()" class="button button-vh">{{'DELETE_QUOTE' | translate}}</button>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                </div>
+                <div class="form-section form-step" ng-style="{'display':proposalSent?'block':'none', 'z-index':proposalSent?'1':'0'}">
+                    <div class="dark-green-title" style="margin-top: 50px;">{{'PROPUESTA5' | translate}}</div>
+                    <p>{{'PROPUESTA7' | translate}}</p>
+                </div>
+            </div>
+            <div class="proposals-received" ng-if="!isTrans() && validProposals > 0 && demand.status == 'pending'">
+                <div class="dark-green-title">{{'PROPUESTA6' | translate}}</div>
+
+                <ul class="list">
+                    <li ng-repeat="i in proposalsReceived" ng-if="!i.desestimada" ui-sref="veryHorse.proposal({demanda:demand.$id,proposal:i.$id})" class="item"  paddind-botton: 80px>
+                        <p style="color: black; font-weight: bold", >{{'PRECIO5' | translate}}
+                        <p style="color: #605e00">{{i.amount | demandAmount}}€ </p>
+                        <button class="button button-proposal button-vh" style="margin-top: 10px;">{{'VER' | translate}} {{'PROPUESTA' | translate}}</button>
+                    </li>
+                </ul>
+            </div>
+            <button ng-click="deleteDemand()" class="button button-wide button-vh" ng-if="!isTrans() && demand.status == 'pending'" style="margin-top: 40px;">{{'ANULAR_DEMANDA' | translate}}</button>
+            <div class="proposals-received" ng-if="demand.status == 'confirmed'">
+                <div class="dark-green-title">{{'PRECIO' | translate}}</div>
+                <p>{{'PRECIO4' | translate}}: <strong>{{acceptedProposal.amount | demandAmount}}€</strong></p>
+                <p>{{'PAGO' | translate}}: <strong>{{acceptedProposal.amount | payAmount}}€</strong></p>
+                <p>{{'PAGO2' | translate}}: <strong>{{acceptedProposal.amount}}€</strong></p>
+                <p> &nbsp; </p>
+                <p ng-if="acceptedProposal.altPicDay && acceptedProposal.altPicDay !== null">{{'PROPUESTA2' | translate}}: {{acceptedProposal.altPicDay | date:'dd-MM-yyyy'}}</p>
+                <p ng-if="acceptedProposal.altDelDay && acceptedProposal.altDelDay !== null">{{'PROPUESTA3' | translate}}: {{acceptedProposal.altDelDay | date:'dd-MM-yyyy'}}</p>
+                <p> &nbsp; </p>
+                <div ng-if="!isTrans()">
+                    <div class="dark-green-title">{{'DATOS' | translate}}</div>
+                    <!-- <p>{{acceptedTransportista.name_comercial}} -->
+                    <!-- <p>{{'NOMBRE_C' | translate}}: <strong>{{acceptedTransportista.name_comercial}}</strong></p> -->
+                    <p>{{'NOMBRE_E' | translate}}: <strong>{{acceptedTransportista.name_empresa}}</strong></p>
+                    <!-- <p>{{'NUMERO_I' | translate}}: <strong>{{acceptedTransportista.numero_identificacion}}</strong></p> -->
+                    <!-- <p>{{'RESPONSABLE' | translate}}: <strong>{{acceptedTransportista.responsable}}</strong></p> -->
+                    <p>Email: <strong><a href="mailto:{{acceptedTransportista.email}}">{{acceptedTransportista.email}}</a></strong></p>
+                    <p>{{'IDIOMA' | translate}}: <strong>{{acceptedTransportista.idioma}}</strong></p>
+                    <p ng-if="acceptedProposal.vehicle">{{'VEHICULO' | translate}}</p>
+                    <p ng-if="acceptedProposal.vehicle" class="vehicle-proposal" ng-style="{'background-image':'url(img/vehiculos/vehiculo_'+acceptedProposal.vehicle+'.png)'}" ></p>
+                    <p> &nbsp; </p>
+                    <p>{{'DIRECCION' | translate}}: <strong>{{acceptedTransportista.address}}</strong></p>
+                    <p>{{'POBLACION' | translate}}: <strong>{{acceptedTransportista.town}}</strong></p>
+                    <p>CP: <strong>{{acceptedTransportista.cp}}</strong></p>
+                    <p>{{'PAIS' | translate}}: <strong>{{acceptedTransportista.country}}</strong></p>
+                    <p> &nbsp;</p>
+                    <p ng-show="acceptedTransportista.phoneFix && acceptedTransportista.phoneFix !== ''">{{'TELEFONO_F' | translate}}: <a href="tel:{{acceptedTransportista.prefixFix}}{{acceptedTransportista.phoneFix}}" target="_blank">{{acceptedTransportista.prefixFix}}-{{acceptedTransportista.phoneFix}}</a></p>
+                    <p> &nbsp;</p>
+                    <p>{{'TELEFONO_M' | translate}}: <a href="tel:{{acceptedTransportista.prefixMob}}{{acceptedTransportista.phoneMob}}" target="_blank">{{acceptedTransportista.prefixMob}}-{{acceptedTransportista.phoneMob}}</a></p>
+                    <p ng-show="acceptedTransportista.web && acceptedTransportista.web!=''">Web: <strong><a href="{{acceptedTransportista.web}}" onclick="window.open(this.href, '_system', 'location=yes');return false;">{{acceptedTransportista.web}}</a></strong></p>
+                    <!-- <p ng-show="acceptedTransportista.facebook && acceptedTransportista.facebook !=''">Facebook: <strong>{{acceptedTransportista.facebook}}</strong></p> -->
+                    
+                    <p> &nbsp;</p>
+                    <p> &nbsp;</p>
+                </div>
+                <div ng-if="isTrans()">
+                    <div class="dark-green-title">{{'DATOS2' | translate}}</div>
+                    <p>{{'NOMBRE' | translate}}: <strong>{{acceptedUser.name}} {{acceptedUser.lastname}}</strong></p>
+                    <p>{{'DIRECCION' | translate}}: <strong>{{acceptedUser.address}} {{acceptedUser.cp}}, {{acceptedUser.town}}, {{acceptedUser.country}}</strong></p>
+                    <p> &nbsp;</p>
+                    <p ng-show="acceptedUser.phoneFix && acceptedUser.phoneFix !== ''">{{'TELEFONO_F' | translate}}: <a href="tel:{{acceptedUser.prefixFix}}{{acceptedUser.phoneFix}}" target="_blank">{{acceptedUser.prefixFix}} - {{acceptedUser.phoneFix}}</a></p>
+                    <p> &nbsp;</p>
+                    <p>{{'TELEFONO_M' | translate}}: <a href="tel:{{acceptedUser.prefixMob}}{{acceptedUser.phoneMob}}" target="_blank">{{acceptedUser.prefixMob}} - {{acceptedUser.phoneMob}}</a></p>
+                    <p> &nbsp;</p>
+                    <p>Email: <strong><a href="mailto:{{acceptedUser.email}}">{{acceptedUser.email}}</a></strong></p>
+                </div>
+            </div>
+    	</div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,62 @@
+<ion-view title="{{title}}" hide-back-button="false" id="page-hotel-item">
+    <ion-content padding="false" class="has-header">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<div class="hotel-box">
+            <div class="hotel-header">
+                <h1>{{hotel.name}}</h1>
+                <div class="hotel-address">{{hotel.address}}, <countryflag ng-if="hotel.country" country="{{hotel.country.toLowerCase()}}">&#32;{{hotel.city}}</countryflag>{{distance}}</div>
+            </div>
+            <div class="hotel-images">
+                <div class="hotel-cover" ng-if="photos.length == 0"><img ng-src="{{hotel.cover_photo}}" style="width:100%;height:auto;margin:auto;display:block"></div>
+                <div class="hotel-photos" ng-if="photos.length > 0">
+                    <ion-slide-box>
+                        <ion-slide ng-repeat="photoUrl in photos">
+                            <img ng-src="{{photoUrl}}" style="width:100%;height:auto;margin:auto;display:block" >
+                        </ion-slide>
+                    </ion-slide-box>
+                </div>
+            </div>
+            <div class="hotel-content">
+                <div class="hotel-descr" ng-bind-html="hotel.description"></div>
+            </div>
+            
+            <div class="hotel-content" ng-if="hotel.youtube">
+                <div class="hotel-descr">
+                    <div class="videoWrapper">
+                        <iframe src="{{hotel.youtube}}" width="560" height="315" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="subtitle">{{'SERVICES' | translate}}</div>
+            <div class="hotel-content">
+                <div class="hotel-descr" ng-bind-html="hotel.services"></div>
+            </div>
+            
+            <div class="subtitle">{{'PRICES' | translate}}</div>
+            <div class="hotel-content">
+                <div class="hotel-descr" ng-bind-html="hotel.prices"></div>
+            </div>
+            
+            <div class="subtitle">{{'CONTACTO' | translate}}</div>
+            <div class="hotel-content">
+                <div class="hotel-contact-links">
+                    <div class="hotel-link" ng-if="hotel.email != ''"><a href="mailto:{{hotel.email}}"><img src="img/icon_email.png" class="hotel-icon"></a></div>
+                    <div class="hotel-link" ng-if="hotel.web != ''"><a href="{{hotel.web}}" ng-click="openInBrowser(hotel.web)"><img src="img/icon_web.png" class="hotel-icon"></a></div>
+                    <div class="hotel-link" ng-if="hotel.facebook != ''"><a href="{{hotel.facebook}}" ng-click="openInBrowser(hotel.facebook)"><img src="img/icon_facebook.png" class="hotel-icon"></a></div>
+                    <div class="hotel-link" ng-if="hotel.whatsapp != ''"><a href="{{hotel.whatsapp}}" ng-click="openInBrowser(hotel.whatsapp)"><img src="img/icon_whatsapp.png" class="hotel-icon"></a></div>
+                    <div class="hotel-link" ng-if="hotel.prefix_fix != '' && hotel.phone_fix != ''"><a ng-click="callPhoneNumber(hotel.prefix_fix, hotel.phone_fix)"><img src="img/icon_phone.png" class="hotel-icon"></a></div>
+                    <div class="hotel-link" ng-if="hotel.prefix_mob != '' && hotel.phone_mob != ''"><a ng-click="callPhoneNumber(hotel.prefix_mob, hotel.phone_mob)"><img src="img/icon_mobile.png" class="hotel-icon"></a></div>
+                </div>
+                
+                <div class="hotel-button-box" ng-if="hotel.latitude != '' && hotel.longitude != ''">
+                    <button class="btn btn-block btn-danger" ng-click="showRoute(hotel.latitude, hotel.longitude)">{{'SHOW_ROUTE' | translate}}</button>
+                </div>
+            </div>
+    	</div>
+    </ion-content>
+</ion-view>

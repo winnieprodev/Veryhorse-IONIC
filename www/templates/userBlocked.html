@@ -1,0 +1,8 @@
+<ion-view title="{{'QUE_DESEA_HACER' | translate}}" hide-back-button="true" id="page-register">
+    <ion-content id="que-hacer" padding="true" class="has-header">
+        <div class="form-70" ng-if="bloqueado">
+            <div class="form-text-big">{{'HOLA' | translate}}: {{getUserName()}}</div>
+            <div class="form-text-big">{{'USUARIO_DESHABILITADO | translate}} <a href="mailto:soporte@veryhorse.com">soporte@veryhorse.com</a></div>
+        </div>
+    </ion-content>
+</ion-view>

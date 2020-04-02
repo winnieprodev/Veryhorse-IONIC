@@ -1,0 +1,273 @@
+<div id="condiciones-popup" ng-controller="dummyCtrl">
+    <div ng-if="banner != null">
+        <div ng-click="openBanner()" class="banner-block">
+            <img ng-src="{{banner.image}}" class="banner-img">
+        </div>
+    </div>
+	<div class="accordion">
+		<div class="panel-default" >
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section1')">
+				<span>1. OWNERSHIP OF THE WEB SITE AND ACCEPTANCE OF THE TERMS OF USE</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section1, 'glyphicon-plus': !status.section1}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section1}">
+				<p>The reading and acceptance of these TERMS AND CONDITIONS OF USE (hereinafter, the “Terms of Use”) is a necessary condition for the use of the services of the App Very Horse (hereinafter, the “App” ).</p>
+				<p>The Terms of Use constitute General Conditions of Contract, are contractual and binding in nature and govern the relationship between all users of the App (hereinafter “the User”) with LOGÍSTICA ECUESTRE  SL (hereinafter “VERYHORSE”), domiciled In C / Antonio Mulet, 21, La Bonanova, CP 07015, with ID number B16506859 and with e-mail: <a href="mailto:info@veryhorse.com">info@veryhorse.com<a></p>
+				<p>The use of this App and its services implies the full acceptance of the provisions included in these Terms of Use according to the version published by VERYHORSE at the moment the User accesses the App. The use of certain services offered to Users Through the App may be subject to particular conditions that substitute, complete and / or modify these Terms of Use. Therefore, prior to the use of such services, the User must also read Carefully and also accept the corresponding special conditions, if any.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section2')">
+				<span>2. SERVICE DESCRIPTION</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section2, 'glyphicon-plus': !status.section2}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section2}">
+				<p>The purpose of the App is to provide a connection service that enables professionals and companies in the equine transport sector in Europe and in the rest of the World (hereinafter “Professionals” or individually considered, “the Professional”) to contact clients who require these specific services hereinafter “the Customers”, or individually considered, “the Customer”). Likewise, Clients can announce their budget requests, so that interested professionals can contact them to provide information about these services.</p>
+				<p>VERYHORSE offers its clients information about professionals and companies, as well as the possibility to request quotes from professionals and get in touch with them. In addition, the service includes information about the Professionals, since the Clients can publicly express opinions on the App about the service offered by the said Professionals.</p>
+				<p>VERYHORSE does not intervene in any case in the negotiations carried out between Client and Professional, remaining outside of the operation at all times, nor does intervene in the execution of the jobs agreed between Client and Professional, so it is not responsible, under no circumstances of the job done by the Professional to the Client, or the fulfillment of the obligations of the Client with the Professional, expressly exempting the Client and the Professional from VERYHORSE of any disagreement that may arise between both.</p>
+			</div>
+		</div>
+
+		<hr>
+		
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section3')">
+				<span>3. AGE AND LEGAL CAPACITY</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section3, 'glyphicon-plus': !status.section3}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section3}">
+				<p>The App is addressed to persons of legal age who have full legal capacity and act necessary for its use. Minors of this age are not authorized to use the App and should not therefore use its services, therefore VERYHORSE reserves the right to cancel the service and cancel the information of those Users who, having been required for this, do not prove their age to VERYHORSE.</p>
+			</div>
+		</div>
+		
+		<hr>
+		
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section4')">
+				<span>4. USERS REGISTRATION</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section4, 'glyphicon-plus': !status.section4}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section4}">
+				<p>VERYHORSE conditions the use of some of the services to the previous completion of the corresponding User registration, either as a Professional or as a Client, indicating at least the information marked with an asterisk and choosing a user name and an identifying password.</p>
+				<p>The User can unsubscribe from the VERYHORSE registration at any time by writing to info@veryhorse.com The User agrees to keep his / her username and password confidential, as well as to use them with due diligence. The User agrees to notify VERYHORSE as soon as possible the unauthorized use of his username and password or any other security breach. VERYHORSE shall not be liable for any damages or losses that may arise due to the non-fulfillment of this obligation by you.</p>
+				<p>The User is solely responsible for the information provided in his registration, he guarantees that the information provided to VERYHORSE are truthful and up to date and he is responsible for communicating to VERYHORSE any changes to them and to maintain all the information he has provided updated.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section5')">
+				<span>5. BUDGET REQUEST</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section5, 'glyphicon-plus': !status.section5}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section5}">
+				<p>VERYHORSE offers Clients the possibility of requesting quotes from Professionals who advertise themselves. For this, the Registered Client provides the information and characteristics of the transfer on which you want to request a budget and is committed to be truthful and adjusted to the reality. In any case, the Client or the Professional will be solely responsible for the false or inaccurate information provided and the damages that could cause VERYHORSE or third parties for such information.</p>
+				<p>When requesting a quote, the Client consents that his contact information and the content of his request are transferred to third parties , in order to contact you to provide the requested budget or information on the requested service. Such communication of personal information is necessary to carry out the service requested by the User and is regulated in the Privacy Policy.</p>
+				<p>Based on the information provided by the Client, the Professional makes a budget that will be binding on the Professional if accepted, unless the job description does not correspond to the reality or has not provided the complete information. In this case, the Professional may modify the budget taking into account the reality of the work to be performed.</p>
+				<p>The Client is not obliged to accept any budget that has been provided to him by Professionals contacted through VERYHORSE.</p>
+				<p>The Client may inform VERYHORSE of any irregularity detected with the Professionals that are advertised through the App, although VERYHORSE is not responsible for the work or professionalism of the Professionals advertised on the App. If VERYHORSE becomes aware that any User is in breach of current law, he will immediately cancel his account.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section6')">
+				<span>6. MODIFICATION OR ELIMINATION OF PROFESSIONAL INFORMATION</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section6, 'glyphicon-plus': !status.section6}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section6}">
+				<p>The User may exercise his rights of access, rectification, cancellation and opposition by sending an email to info@veryhorse.com. For more information about the use of VERYHORSE on the information you receive, see our Privacy Policy.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section7')">
+				<span>7. USE OF THE SERVICES AND App</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section7, 'glyphicon-plus': !status.section7}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section7}">
+				<p>Users undertake to make use of the services offered through the App in accordance with current legislation, these Terms of Use, the particular conditions that are specified for certain services and other notices and instructions made to their knowledge, as well as the Moral and generally accepted good customs and public order.</p>
+				<p>Users shall refrain from using any materials and information contained in this App for purposes that are unlawful or expressly prohibited in these Terms of Use as well as the particular conditions that, if applicable, are authorized, or against the rights and Interests of VERYHORSE, its members or third parties and must respond to them in case of contravening or non-compliance with these obligations or, in any way (including the introduction or dissemination of “computer viruses”) damage, disable, overburden, deteriorate or prevent normal Use of the materials and information contained in the App, information systems or documents, files and any kind of content stored on any computer equipment (hacking) of VERYHORSE, its members or any User of the App.</p>
+				<p>App Anti-spamming Policy<br/>
+					Users are obliged to refrain from:<br/>
+					Collecting information for advertising purposes and sending advertisements, any kind of communications for sale or other commercial purposes.<br/>
+					Provide third parties, for any purpose, information collected on the App.<br/>	
+					Users or third parties harmed by the receipt of unsolicited messages may report such circumstance by sending a message to the following e-mail address: <a href="mailto:info@veryhorse.com">info@veryhorse.com</a></p>
+				<p>Suspension or revocation of the User<br/>
+					If VERYHORSE considers that the User breaches these Conditions, it reserves the right to suspend or revoke its registration and right to access or use the App at any time and without responsibility or need to inform the User. VERYHORSE may use any operating, technological, legal or other method available for it to respect these Conditions (including, without limitation, IP address blocking). VERYHORSE may notify the User of the blocking or cancellation of their access to the App, although it is not obliged to do so.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section8')">
+				<span>8. OPINIONS</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section8, 'glyphicon-plus': !status.section8}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section8}">
+				<p>Clients will be able to insert opinions and comments related to Professionals registered in the Professionals Directory. These opinions may be based on those services provided as a result of the use of the App. VERYHORSE reserves the right to publish, extract, summarize or abbreviate the content of the opinions made by the Customers. The User undertakes not to transmit, disseminate or make available to third parties content, comments or opinions that, by way of an indication and not exhaustive:<br/>
+					In any case, they are contrary, underestimate or violate the fundamental rights and public freedoms constitutionally recognized in international treaties and in the rest of the legislation in power. Induce, incite or promote criminal, denigratory, defamatory, defamatory, violent or, generally, contrary to law, morals and generally accepted good practices or public order.</p>
+				<p>Induce, incite or promote discriminatory actions, attitudes or thoughts based on sex, race, religion, belief, age or condition.<br/>
+					Do not take into account the goods or services developed by the Professional or comments that have no qualitative value (for example, “work is not yet finished”).<br/>
+					Incorporate, make available or allow access to criminal, violent, offensive, harmful, degrading, or in general products, elements, messages or services contrary to law, morality and generally accepted good practices or public order.<br/>
+					Induce or induce others to an unacceptable state of anxiety or fear.<br/>
+					Be insulting, offensive or demeaning. <br/>
+					They do not correspond to the work done by the Professional.<br/>
+					Against the right of honor, personal and family privacy or even the image of people.<br/>
+					They violate the regulations regarding confidentiality of communications.<br/>
+					They relate to the advertising of sites that are the responsibility of the App or its advertisers.<br/>
+					Be false or do not correspond to reality.<br/>
+					It is illegal, misleading or disloyal advertising.<br/>
+					Difficulties in the normal operation of the services provoked by their characteristics (such as format, extension, etc.).</p>
+				<p>VERYHORSE reserves the right to remove from the App all those comments and opinions that are not in accordance with these Terms of Use. VERYHORSE in no case is responsible for the contents or opinions expressed by a User on the App.</p>
+				<p>Likewise, VERYHORSE reserves the right to modify the content published by the Professional on the App, for the sole purposes of giving it a better presentation and distribution on the Web, and to highlight the characteristics of the services offered, as well as to adapt VERYHORSE quality content and quality minimums. To this effect, the Professional authorizes VERYHORSE to, free of charge, make such modifications or adaptations, to freely reproduce, distribute, advertise or exploit in any form or medium such content published by the Professional, renouncing any rights of economic content that Could correspond to him, by way of compensation or any other title.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section9')">
+				<span>9. INTELLECTUAL AND INDUSTRIAL PROPERTY</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section9, 'glyphicon-plus': !status.section9}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section9}">
+				<p>VERYHORSE is the owner of the domain names:<br/>
+					<a href="http://www.veryhorse.com" onclick="window.open(this.href, '_system', 'location=yes');return false;">www.veryhorse.com</a><br/>
+					<a href="http://www.veryhorse.es" onclick="window.open(this.href, '_system', 'location=yes');return false;">www.veryhorse.es</a><br/>
+					<a href="http://www.veryhorse.eu" onclick="window.open(this.href, '_system', 'location=yes');return false;">www.veryhorse.eu</a></p>
+				<p>The whole App, including without exceptions its design, structure and distribution, texts and contents, logos, buttons, images, drawings, trademarks, trade names, source code, creatives, as well as all intellectual property rights And any other distinctive sign, belong or have as assignee to VERYHORSE or, as the case may be, to the natural or legal persons listed as authors or holders of the rights or their licensors, without it being understood that the use and access to the Web Site and the use of its services attribute to the User any right over said elements. The User agrees to respect these rights.<br/>
+					Material published by Users</p>
+				<p>The User is the owner of all the material that he publishes in the App, as long as it is really the legitimate owner of what he publishes. By posting it, the User warrants that he has the permission to do so and automatically grants a non-exclusive, continuous and universal license to VERYHORSE for you to use. VERYHORSE may assign or transfer the aforementioned license to its affiliates and successors without the consent of the User.<br/>
+					VERYHORSE reserves the right to disclose the User’s identity to third parties who claim that the material posted on the App violates their intellectual property, privacy or other rights. VERYHORSE will not assume any responsibility regarding the intellectual or industrial property rights of third parties that are infringed by a User.<br/>
+					The reproduction, exploitation, alteration, distribution or public communication of the App  for uses other than the legitimate information or contracting by the Users of the offered services is prohibited.<br/>
+					By using the App, the User acknowledges that he does not have any ownership or license rights over them.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section10')">
+				<span>10. DISCLAIMER OF WARRANTIES AND LIABILITY</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section10, 'glyphicon-plus': !status.section10}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section10}">
+				<p>VERYHORSE is not liable for any damages of any kind that may be due to lack of accuracy, completeness, current affairs, To errors or omissions of those who may suffer the information and services contained in this App or other content that can be accessed through it or assume no duty or commitment to verify or monitor their content and information.<br/>
+					Exclusion of guarantees and responsibility for the operation of the App and its services</p>
+				<p>VERYHORSE does not guarantee the availability and continuity of the operation of the App and its services.</p>
+				<p>VERYHORSE will endeavor to warn in good time of any interruptions that may occur in the operation of the App and its services whenever possible.</p>
+				<p>VERYHORSE, or its server, may not be free of viruses, errors, spyware, Trojans or similar malicious software.</p>
+				<p>VERYHORSE is not responsible for any damage to your computer hardware or software or other technology. Nor is it responsible for any loss of information arising from the transmission, use of data or wrong content published by Users.</p>
+				<p>VERYHORSE excludes, to the fullest extent permitted by law, any liability for damages of any nature that may be due to the lack of availability or continuity of the operation of the App and its services or the fraud of the utility that The Users could have attributed to the App and its services and, in Client, but not exclusively, to the failures in access to the different web pages that configure the App.<br/>
+					Exclusion of guarantees and liability for the use of the App, services and content by Users</p>
+				<p>VERYHORSE does not guarantee that Users use the services and contents of the App in accordance with these Terms of Use and, as the case may be, with the particular conditions resulting from application, or that they do so in a diligent and prudent manner. </p>
+				<p>VERYHORSE also does not guarantee the veracity of the data that the Users provide about themselves either in their area of registration, or in their participations in the App. Likewise, VERYHORSE does not guarantee that the contents posted on the App by Users comply with the provisions of these Terms of Use, with the particular conditions and with the current legality.</p>
+				<p>VERYHORSE excludes any liability for damages of any kind that may be due to the use of the services and contents by Users, or that may be due to the lack of veracity, validity or authenticity of the information that Users Provide to other Users about themselves and, in particular, but not exclusively, for damages of any nature that may be due to the impersonation of a third party by a User in any kind of communication made to Through the App.</p>
+				<p>Exclusion of guarantees by the qualification of the Professionals and the execution of the works agreed.<br/>
+					VERYHORSE will not intervene in any case in the negotiations carried out between Client and Professional, remaining at the margin of the same at all times, so it will not be responsible, in any case, for the fulfillment of the obligations of the Client with the Professional, exempting Expressly the Client and the Professional to VERYHORSE of any disagreement that could arise between both.<br/>
+					It is the exclusive responsibility of the Client to verify the suitability of the services offered by the Professional, and that they are adapted to the needs of the Client. The Client also assumes the responsibility of examining the qualification, training and professional competence of the Client, as well as to carry out the appropriate follow-up on the work entrusted, the materials and the adaptation, aesthetic or not, to the required by the Client and agreed in the Timely budget. In no case shall VERYHORSE control or intervene in the execution of the work by the Professional, nor in the adequacy, quality or result thereof, therefore VERYHORSE excludes, to the full extent permitted by the legal system, any liability for damages of any nature that may be due to the execution or result of the work entrusted to the Professional, and the Client expressly exempts VERYHORSE from any discrepancy, liability, damage, prejudice or impairment as a result of the contracting or work done by the Professional.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section11')">
+				<span>11. VERYHORSE PRIVACY POLICY</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section11, 'glyphicon-plus': !status.section11}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section11}">
+				<p>The reading and acceptance of the privacy policy of VERYHORSE (hereinafter, the “Privacy Policy”) is a necessary condition for the use of the services of the App.<br>
+				 This Privacy Policy regulates the collection and use of the information of the Users of the App from the date of entry into force that appears at the end of these Terms of Use.<br/> 
+				 Please read this privacy policy carefully before you start using the App and provide any personal information. It will help you make informed decisions.<br/> 
+				 If you use the App it is because you accept that VERYHORSE uses your information and personal data in accordance with this Privacy Policy. If you do not agree with it, please do not use the App.<br/> 
+				 VERYHORSE will always request your consent before using your data for any purpose other than those described in this Privacy Policy.<br/> 
+				 In the treatment of the personal data of its Users, VERYHORSE complies at all times with the legislation in force in Spain and in the European Union and in particular, with Organic Law 15/1999, of December 13, on Data Protection (Hereinafter “LOPD”) and its development regulations. To this end, it adopts the technical and organizational measures necessary to prevent loss, misuse, alteration, unauthorized access and theft of the personal data provided, taking into account the state of the technology, the nature of the data and the risks to which Are exposed. For the purposes of the provisions of articles 5.1, 2 and 3 of the LOPD, VERYHORSE informs the User that, in order to improve the quality of the services provided and facilitate the performance of the same, reserves the right to record the calls Telephone, both incoming and outgoing, with the prior and express consent of the User, so that the refusal to make such recording will entitle VERYHORSE not to accept the activation of the service or, if applicable, to proceed with the suspension of the same.
+				<p>Information We Collect About the User:<br/>
+					VERYHORSE conditions the use of some of the services of the App to the previous fulfillment of the corresponding User registration, either as Professional or Client, and must indicate at least in the registration forms the information marked with an asterisk on certain personal data ( Hereinafter “Personal Information”), such as name and surname, user name, password, e-mail address, postal address, credit or debit card number and telephone number.<br/>
+					Under the terms of the LOPD, we inform you that the completion of the forms by the User is voluntary, although failure to complete the basic fields will limit access or use of the App. The personal data that the Users provide us are incorporated and will be treated in the files owned by VERYHORSE, in order to be able to attend the requests of the Users and provide the requested service, as well as to keep them informed, even by electronic means, on issues Relating to the activity of the company and its services, as well as for the sending of commercial communications on the sectors of reforms, works, decoration, interior design, home and large consumption, which the User expressly consents to. The User may exercise at any time the rights of access, rectification, cancellation and opposition of his personal data by email addressed to <a href="mailto:info@veryhorse.com">info@veryhorse.com</a> Under the terms of the LOPD, we inform you that the completion of the forms by the User is voluntary, although failure to complete the basic fields will limit access or use of the App. The personal data that the Users provide us are incorporated and will be treated in the files owned by VERYHORSE, in order to be able to attend the requests of the Users and provide the requested service, as well as to keep them informed, even by electronic means, on issues Relating to the activity of the company and its services, as well as for the sending of commercial communications on the sectors of horses, which the User expressly consents to. The User may exercise at any time the rights of access, rectification, cancellation and opposition of his personal data by email addressed to info@veryhorse.com Under the terms of the LOPD, we inform you that the completion of the forms by the User is voluntary, although failure to complete the basic fields will limit the access or use of the App.<br/>
+					In the use of the data included in the file, VERYHORSE undertakes to respect the confidentiality and to use them according to the purpose of the file, as well as to fulfill its obligation to save them and adapt all the measures to avoid the alteration, loss, Treatment or unauthorized access in accordance with the provisions of Royal Decree 1720/2007 of 21 December, which approves the Regulation of development of the LOPD.</p>
+
+				<p>Privacy of minors<br/>
+					The App is addressed to adults. VERYHORSE does not voluntarily collect or maintain any Personal Information of minors.</p>
+					If VERYHORSE is aware that the User is a minor, they will immediately cancel their Personal Information, their non-personal information and their account. Use of data provided by Users
+					<p>VERYHORSE will use the data of its Users with a commercial purpose of personalization, operation and statistics, and for the sending of commercial communications to the Users. The User expressly authorizes the storage of his data and the possibility of doing marketing studies with them, in order to adapt the services of VERYHORSE to his personal profile. In addition, VERYHORSE may assign the Personal Information and the Non- Personal Information of the Clients to up to four Professionals in order for the Client to receive the requested service. VERYHORSE may retain User data even if it has terminated all relationship with VERYHORSE, for the time necessary to comply with the appropriate legal obligations.</p>
+					<p>VERYHORSE may share and publish in social networks the content of the services offered by the Professionals, which have published on the App, for advertising purposes. To that end, the Professional authorizes VERYHORSE to freely, freely reproduce, distribute, advertise, adapt or exploit in any form or medium such content published by the Professional, renouncing any rights of economic content that may correspond to it, in Concept of compensation or any other title.</p>
+					<p>VERYHORSE will use the User’s email address for the following purposes, which the User expressly consents to: Sending newsletters and other commercial communications by e- mail about VERYHORSE and the sectors related to the horse in general. The User may indicate his opposition to the receipt of such bulletin at any time.</p>
+					<p>Ask for participation in surveys that help improve the service provided. Respond to client requests for quotes. Notify the activities of other Users (if someone sends an opinion or comment). Report service or account issues (for example, reset password). Report improper conduct and, if necessary, report suspension or deletion of the User’s account.</p>
+					<p>By accessing or using the App, Users expressly consent to receive such e-mail messages, although they may unsubscribe from (i) the specified link in any communication sent by e-mail, (ii) in their personal settings in the App or (iii) by sending an email to <a href:"mailto:info@veryhorse.com">info@veryhorse.com.</a> However, the User will not be able to unsubscribe from our correspondence, such as messages relating to his account.</p>
+					<p>In addition, VERYHORSE may use the Personal Information to: Recommend services that might be interesting. Ensure that advertisements that are viewed as part of the use of the App are interesting to the User, according to their geographical location and chosen job category. Give the User your comments and opinions. In any other way, to improve your use of the App. As aggregated data VERYHORSE may use the Personal Information of Users as part of aggregated data to show third parties (including advertisers). You may also share statistics and demographic information about Users and your use of the App with advertising and programming providers, but none of these will allow such third parties to personally identify a User. With service providers There are third parties who manage part of the services of the App, such as advertisements, surveys, etc. To them, VERYHORSE requires them to comply with this Privacy Policy in what is applicable to them and in addition they must have their own; However, VERYHORSE will not be responsible for compliance with said policy.</p>
+				<p>If VERYHORSE is required<br/>
+					Under certain circumstances, VERYHORSE may share the Personal Information, use it, preserve it or disclose it, such as: To cooperate with the competent authorities:</p>
+
+				<p>1. If we believe it is reasonably necessary to satisfy any law or proceeding Legal in any part of the world and we believe that doing so may diminish our responsibility or allow us to defend our legal rights; And we will only provide the required information.</p>
+				<p>2. If we believe that this action is appropriate to enforce VERYHORSE’s Terms and Conditions, including any investigation of possible violations of it.</p>
+				<p>3. If such action is adequate to protect the rights, property or safety of VERYHORSE, its employees and Users.</p>
+				<p>4. In all these cases, VERYHORSE may, on its own initiative or at the request of third parties that demonstrate a legitimate interest, provide the Personal Information of the Professional, assignment that the Professional expressly consents to.</p>
+				<p>5. Corporate Transaction. If VERYHORSE participates in a merger, acquisition or other transaction involving the sale of all or some of its assets or securities with voting rights, the User’s information, including Personal Information obtained through the App, may be included in the Transferred assets or securities. If this happens, the User’s Personal Information will remain the subject of this Privacy Policy.</p>	
+				<p>Security measures to protect personal information VERYHORSE is concerned to defend the right to privacy of Users. Therefore, it takes all necessary technical and organizational measures to protect the security and integrity of Personal Information against unauthorized access and also against accidental alteration, loss or destruction. Thus, sending and sending data that is performed by the User through the App or the information it sends, is protected by electronic security techniques in the network. Also, the data supplied and stored in the VERYHORSE databases are also protected by security systems that prevent unauthorized third party access to them. VERYHORSE makes its best efforts to have the most up-to-date systems for the effectiveness of these security systems.</p>
+				<p>In addition, VERYHORSE stores the Personal Information for as long as is essential to offer its services and periodically destroys the one that no longer needs. VERYHORSE has a file with a copy of the information that allows you to comply with the laws or respond to legal process.</p>
+				<p>In spite of the above, VERYHORSE can not guarantee the absolute security of the Personal Information, so that the User must collaborate and use and at all times the common sense about the Personal Information that publishes. The control of the user himself on his information All data published by the User does so at his own risk. VERYHORSE can not guarantee that the published information will not be seen by unauthorized persons. The User understands and acknowledges that, even after deletion, the Information may remain cached and that the pages are archived if other Users have copied or stored the Information.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section12')">
+				<span>12. DENUNCIATION</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section12, 'glyphicon-plus': !status.section12}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section12}">
+				<p>In the event that any User or third party considers that there are facts or circumstances that reveal the illegality of any content on the App or its use, you should contact VERYHORSE through info@veryhorse.com or through (I) the personal data of the claimant (name, address, ID or passport number, telephone number and e-mail address) and (ii) the contact details indicated on the App and in these Terms of Use, ) The alleged illegal activity carried out on the App and its motivation to reveal such unlawful nature.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section13')">
+				<span>13. DURATION AND TERMINATION</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section13, 'glyphicon-plus': !status.section13}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section13}">
+				<p>The presentation of the services that VERYHORSE provides through the App has in principle, an indefinite duration. However, VERYHORSE is authorized to terminate or suspend the provision of its services at any time, without prejudice to what has been provided in this regard in the particular conditions. In any case, if possible, VERYHORSE will endeavor to warn in advance the termination or suspension of any service or all of them.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section14')">
+				<span>14. APPLICABLE LAW AND COMPETENT JURISDICTION</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section14, 'glyphicon-plus': !status.section14}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section14}">
+				<p>These Terms of Use shall be governed by Spanish law.<br/>
+					The parties submit, at their option, for the resolution of conflicts and with waiver of any other jurisdiction, to the courts of Palma de Mallorca (illes balears, Spain).</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="panel-default">
+			<div class="accordion-title panel-heading" ng-click="toggleSection('section15')">
+				<span>15. EFFECTIVE DATE AND MODIFICATIONS TO THE TERMS OF USE</span>
+				<i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status.section15, 'glyphicon-plus': !status.section15}"></i>
+			</div>
+			<div class="accordion-content" ng-class="{'is-open':status.section15}">
+				<p>These Terms of Use were last updated on March 25, 2017.<br/>
+					VERYHORSE reserves the right to modify, correct or unilaterally change these Terms of Use at any time. When this happens, the new Terms of Use will be posted on the App as well as the date on which they will take effect in the final part of the Terms of Use. We recommend that you visit this page regularly to keep up with the changes That can be produced. If you do not accept the modifications of these Terms of Use, do not use the App. The continuous use of the App, implies the acceptance of these Terms of Use and its possible modifications.</p>
+			</div>
+		</div>
+	</div>
+</div>

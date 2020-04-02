@@ -1,0 +1,13 @@
+<ion-view title="{{title}}" hide-back-button="false" id="page-newDemand">
+    <ion-content padding="false" class="has-header">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<ul class="list">
+    		<li class="item center" ng-show="demands.length == 0">{{'NO_RESUL' | translate}}</li>
+    	    <li class="item" ng-repeat="d in demands"><p>{{i | demandTitle}}</p></li>
+    	</ul>
+    </ion-content>
+</ion-view>

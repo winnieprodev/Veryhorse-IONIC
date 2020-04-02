@@ -1,0 +1,29 @@
+<ion-view title="{{title}}" hide-back-button="false" id="page-hotels">
+    <ion-content padding="true" class="has-header">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<ul class="list-tabs-items list">
+    	    <li ui-sref="veryHorse.detailsHotels({id:{{hotel.id}}})" class="hotel-card" ng-repeat="hotel in hotels">
+                <div class="hotel-item-header">
+                    <div class="hotel-header-title">{{hotel.name}}</div>
+                    <div class="hotel-header-distance">{{hotel.distance}}</div>
+                    <div class="hotel-header-country">{{hotel.address}}, <countryflag ng-if="hotel.country" country="{{hotel.country.toLowerCase()}}">&#32;{{hotel.city}}</countryflag></div>
+                </div>
+                <div class="hotel-item-img">
+                    <div class="hotel-img" style="background-image: url({{hotel.cover_photo}})"></div>
+                </div>
+                <div class="hotel-item-content">
+                    <div class="hotel-descr" ng-bind-html="hotel.description"></div>
+                </div>
+			</li>
+    	</ul>
+    </ion-content>
+    <div class="float-button">
+        <button id="fab-profile" ui-sref="veryHorse.mapHotels" class="button button-fab button-fab-bottom-right fab-fixed button-assertive pane" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+            <i class="icon ion-android-map"></i> {{'VIEW_MAP' | translate}}
+        </button>
+    </div>
+</ion-view>

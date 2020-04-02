@@ -1,0 +1,34 @@
+<div class="payment-form">
+    <div class="row" style="margin-bottom: 15px">
+        <p style="color:black" ng-bind-html="'BEFORE_PAYMENT' | translate"></p>
+    </div>
+	<div class="row">
+		<label>{{'NUMERO_T' | translate}}*</label>
+		<input type="text" ng-model="payForm.cc" ng-class="{'payFormError':formErrors.cc}" ng-style="{'border': formErrors.cc ? '1px solid red !important' : '' }" placeholder="{{formErrors.cc ? ('OBLIGATORIO' | translate) : '' }}"/>
+	</div>
+	
+	<div class="row">
+		<label>{{'NOMBRE_T' | translate}}*</label>
+		<input type="text" ng-model="payForm.name" ng-class="{'payFormError':formErrors.name}" ng-style="{'border-color': formErrors.name ? 'red' : '' }" placeholder="{{formErrors.name ? ('OBLIGATORIO' | translate) : '' }}"/>
+	</div>
+
+	<div class="row">
+		<div class="col-50" style="padding-right: 5px;display: inline-block;max-width: 49%;">
+			<label>{{'MES' | translate}} (MM)*</label>
+			<input type="text" ng-model="payForm.mes" ng-class="{'payFormError':formErrors.mes}" ng-style="{'border-color': formErrors.mes ? 'red' : '' }" placeholder="{{formErrors.mes ? ('OBLIGATORIO3' | translate) : '' }}"/>
+		</div>
+		<div class="col-50" style="padding-right: 2px;display: inline-block;max-width: 49%;">
+			<label>{{'ANO' |translate}} (AA)*</label>
+			<input type="text" ng-model="payForm.year" ng-class="{'payFormError':formErrors.year}" ng-style="{'border-color': formErrors.year ? 'red' : '' }" placeholder="{{formErrors.year ? ('OBLIGATORIO3' | translate) : '' }}"/>
+		</div>
+	</div>
+
+	<div class="row">
+		<label>CCV **</label>
+		<input type="text" ng-model="payForm.ccv" ng-class="{'payFormError':formErrors.ccv}" ng-style="{'border-color': formErrors.ccv ? 'red' : '' }" placeholder="{{formErrors.ccv ? ('OBLIGATORIO' | translate) : '' }}"/>
+	</div>
+	<!--<div class="form-error" ng-style="{'opacity':formErrors.ccv?'1':'0','height':formErrors.ccv?'14px':'0px','line-height':formErrors.name?'14px':'0'}" >{{'OBLIGATORIO' | translate}}</div>-->
+	<div class="row">
+		<p style="font-size: 10px;color: #000;">** {{'CODIGO_3_DIGITOS_REVERSO_TARJETA' | translate}}</p>
+	</div>
+</div>

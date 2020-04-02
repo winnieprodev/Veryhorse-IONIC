@@ -1,0 +1,24 @@
+<ion-view title="{{'LOGIN' | translate}}" hide-back-button="true" id="page4">
+    <ion-content id="login" padding="true" class="has-header">
+		<div class="login-img">
+			<img src="img/login-img.png" />	
+		</div>
+    	<div class="form-70">
+	    	<form class="vh-form">
+	    		<label>Email</label>
+	    		<input type="text" 	name="email" ng-model="formData.email" 	placeholder="" />
+	    		<label>{{'CONTRASENA' | translate}}</label>
+	    		<input type="password" 	name="telefono" 	ng-model="formData.password" 	placeholder="" />
+	    		<div class="form-error" ng-style="{'opacity':formError.msg !== ''?'1':'0'}" ng-bind-html="formError.msg || '&nbsp;'"></div>
+	    		<button ng-click="login()" class="button button-wide button-vh" ng-disabled="doingLogin">
+	    			<span ng-if="doingLogin == false">{{'ENTRAR' | translate}}</span>
+	    			<span ng-if="doingLogin == true">Loading...</span>
+	    		</button>
+	    	</form>
+    	</div>
+    	<div class="login-links">
+    		<a ui-sref="veryHorse.register">{{'NO_CUEN' | translate}}</a>	
+    		<a ui-sref="veryHorse.forgotPassword">{{'OLVIDO' | translate}}</a>
+    	</div>
+    </ion-content>
+</ion-view>

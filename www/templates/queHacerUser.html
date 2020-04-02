@@ -1,0 +1,19 @@
+<ion-view title="{{'QUE_DESEA_HACER' | translate}}" hide-back-button="true" id="page-register">
+    <ion-content id="que-hacer" padding="true" class="has-header">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<div class="form-70" ng-if="aprobado">
+    		<div class="form-text-big">{{'DESEA_DEMANDA_TRANSLADO' | translate}}</div>
+    		<div class="buttons">
+				<button ui-sref="veryHorse.newDemand"   class="button button-vh button-inline button-sq">{{'SI' | translate}}</button>
+				<button ui-sref="veryHorse.mundoEquino" class="button button-vh button-inline button-sq">NO</button>
+			</div>
+    	</div>
+        <div class="form-70" ng-if="!aprobado">
+            <div class="form-text-big">{{'DESABILITADO' | translate}}<a href="mailto:soporte@veryhorse.com">soporte@veryhorse.com</a></div>
+        </div>
+    </ion-content>
+</ion-view>

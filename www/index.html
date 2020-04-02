@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAikQeVBdg09qU5lWa_wzioeAWvFyOmOg&libraries=places"></script>
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+    <script src="lib/angular-i18n/angular-locale_es-es.js"></script>
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/angularfire/dist/angularfire.min.js"></script>
+    <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+    <script src="lib/ng-tags-input/ng-tags-input.js"></script>
+    <script src="lib/ionic-ratings/dist/ionic-ratings.min.js"></script>
+    <script src="lib/angular-credit-cards/release/angular-credit-cards.js"></script>
+    <script src="lib/vsGoogleAutocomplete/dist/vs-google-autocomplete.min.js"></script>
+    <script src="lib/ngmap/build/scripts/ng-map.min.js"></script>
+    <script src="lib/angular-translate/angular-translate.min.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/ngCountryFlags/ng-countryflags.min.js"></script>
+    
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v2/"></script>
+    <script src="lib/angular-stripe/release/angular-stripe.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script type="text/javascript" src="js/paypal-mobile-js-helper.js"></script>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="lib/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet">
+    <link href="css/flag-icon.min.css" rel="stylesheet">
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <style type="text/css">
+      .platform-ios .manual-ios-statusbar-padding{
+        padding-top:20px;
+      }
+      .manual-remove-top-padding{
+        padding-top:0px;
+      }
+      .manual-remove-top-padding .scroll{
+        padding-top:0px !important;
+      }
+      ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
+        margin-left:-10px;
+        margin-right:-10px;
+      }
+      ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
+        border-radius:0px;
+        border-left:0px;
+        border-right: 0px;
+      }
+    </style>
+
+    <script src="js/filters.js"></script>
+    <script src="js/mundoEquino.js"></script>
+    <script src="js/mundoEquinoItem.js"></script>
+    <script src="js/contacto.js"></script>
+    <script src="js/dummy.js"></script>
+    <script src="js/valoraciones.js"></script>
+    <script src="js/valoracionesItem.js"></script>
+    <script src="js/valoracionesTrans.js"></script>
+    <script src="js/compartir.js"></script>
+    <script src="js/newDemand.js"></script>
+    <script src="js/myDemands.js"></script>
+    <script src="js/demands.js"></script>
+    <script src="js/askpending.js"></script>
+    <script src="js/myDemandsItem.js"></script>
+    <script src="js/proposalItem.js"></script>
+    <script src="js/userProfile.js"></script>
+    <script src="js/hotelsList.js"></script>
+    <script src="js/hotelsMap.js"></script>
+    <script src="js/hotelsDetails.js"></script>
+    <script src="js/helpSection.js"></script>
+    <script src="js/staticPage.js"></script>
+
+
+    <script src="js/userProfileTrans.js"></script>
+    <script src="js/registerTrans.js"></script>
+    <script src="js/queHacer.js"></script>
+    <script src="js/selectLanguage.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/forgotPassword.js"></script>
+    <script src="js/emergencias24h.js"></script>
+    <script src="js/presentacion.js"></script>
+    <script src="js/registerUser.js"></script>
+    <script src="js/veryHorse.js"></script>
+
+
+
+
+
+
+    <script src="js/app.js"></script>
+    <script src="js/translate.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services/data.service.js"></script>
+    <script src="js/routes.js"></script>
+
+    <script src="js/directives.js"></script>
+
+    <!-- <script src="js/services/user.service.js"></script> -->
+
+
+
+    <!-- Only required for Tab projects w/ pages in multiple tabs
+    <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
+    -->
+
+  </head>
+  <body ng-app="app" animation="slide-left-right-ios7">
+  <div>
+    <div>
+        <ion-nav-bar class="bar-vh">
+            <ion-nav-back-button></ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-nav-view></ion-nav-view>
+    </div>
+</div>
+  </body>
+</html>

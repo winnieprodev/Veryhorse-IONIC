@@ -1,0 +1,65 @@
+<ion-view title="{{'VERY' | translate}}" id="page4">
+    <ion-content id="como-funciona" padding="true" class="has-header" ng-controller="dummyCtrl">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+        <uib-accordion close-others="true">
+            <div uib-accordion-group class="panel-default" is-open="status0.open">
+                <uib-accordion-heading>
+                    {{'VERY' | translate}}  
+                    <i class="panel-default2 pull-right glyphicon " ng-class="{'glyphicon glyphicon-minus':status0.open, 'glyphicon-plus': !status0.open}"></i>
+                </uib-accordion-heading>
+                <p>{{'TEXTO_VERY_HORSE_PARRAFO1' | translate}}</p>
+                <p>{{'TEXTO_VERY_HORSE_PARRAFO2' | translate}}</p>
+            </div>
+            <hr>
+                
+            <div uib-accordion-group class="panel-default" is-open="status.open">
+                <uib-accordion-heading>
+                    <!--¿Cómo funciona? -->
+                    {{'COMO_FUNCIONA' | translate}} 
+                    <i class="panel-default2 pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus':status.open, 'glyphicon-plus': !status.open}"></i>
+                </uib-accordion-heading>
+                <!--<p>El funcionamiento es muy sencillo, una vez te hayas descargado la aplicación y te hayas registrado de forma gratuita, podrás elegir entre usuario o transportista.</p>-->
+                <p>{{'TEXTO_COMO_FUNCIONA' | translate}}</p>
+            </div>
+
+            <hr>
+            <div uib-accordion-group class="panel-default" is-open="status3.open">
+                <uib-accordion-heading>
+                    <!--Usuarios -->
+                    {{'USUARIOS' | translate}}  
+                    <i class="panel-default2 pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus':status3.open, 'glyphicon-plus': !status3.open}"></i>
+                </uib-accordion-heading>
+                <p>{{'TEXTO_USUARIO_PARRAFO1' |translate}}</p>
+                <p>{{'TEXTO_USUARIO_PARRAFO2' |translate}}</p>
+                <p>{{'TEXTO_USUARIO_PARRAFO3' |translate}}</p>
+<!--
+                <p>Como usuario deberás rellenar los datos de registro necesarios y poder hacer tu demanda de traslado, para que los transportistas puedan enviarte ofertas económicas para dicho traslado. Una vez que hayas elegido a la empresa transportista, sus profesionales contactarán contigo para confirmar el servicio y ultimar detalles. En tu documento de confirmación tendrás disponibles todos los datos de la empresa transportista.</p>
+                <p>En lo que se refiere al pago del servicio de transporte equino, en el momento de confirmar tu reserva debes abonar una pequeña parte del total. El resto lo abonarás al transportista al recoger tu caballo o caballos. Una vez realizado el pago, el transportista te entregará un justificante de pago y una copia del contrato de traslado.</p>
+                <p>A través de nuestra App de transporte de caballos online en España, internacional y única en Europa, puedes tener la seguridad de obtener un servicio profesional y con todas las garantías. Tienes que saber que todos los transportistas asociados a Very Horse han sido evaluados y validados por nuestro equipo. Hemos comprobado los datos profesionales de estas empresas de transporte, sus seguros y licencias. Para apoyar tu seguridad y confianza, podemos ofrecerte valoraciones de clientes sobre otros muchos servicios realizados.</p>-->
+            </div>
+            <hr>
+            <!--<div uib-accordion-group class="panel-default" heading="Transportistas">-->
+            <div uib-accordion-group class="panel-default" is-open="status4.open">
+                <uib-accordion-heading>
+                    <!--Transportistas-->
+                    {{'TRASPORTISTA' |translate}}  
+                    <i class="panel-default2 pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus':status4.open, 'glyphicon-plus': !status4.open}"></i>
+                </uib-accordion-heading>
+                <p>{{'TEXTO_TRANSPORTISTA_PARRAFO1' | translate}}</p>
+                <p>{{'TEXTO_TRANSPORTISTA_PARRAFO2' | translate}}</p>
+                <p>{{'TEXTO_TRANSPORTISTA_PARRAFO3' | translate}}</p>
+                <!--<p>En el caso de ser transportista debes rellenar los datos de registro necesarios de empresa, servicios que ofrece, área de transporte, etc… y esperar a ser validado por nuestro departamento de verificaciones para poder empezar a recibir demandas de traslados según tus servicios y enviar tus ofertas económicas de traslado.</p>
+                <p>En el caso de ser elegido y recibir la aprobación del usuario, obtendrás sus datos para poder ponerte en contacto con él y acordar la forma de pago, recogida, etc…</p>
+                <p>Nuestra Aplicación de transporte de caballos en España, Europa e internacional es la mejor plataforma para llegar a todos aquellos usuarios que requieren de tus servicios de forma totalmente seria, eficaz y con todas las garantías.</p>-->
+                <p>{{'PARA_INFORMACION' | translate}} <a href="http://www.veryhorse.com" onclick="window.open(this.href, '_system', 'location=yes');return false;">www.veryhorse.com</a></p>
+            </div>
+            <hr>
+        </uib-accordion>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,20 @@
+<ion-view title="{{'NOTICIAS' | translate}}" hide-back-button="true" id="page1">
+    <ion-content id="mundo-equino" padding="true" class="has-header">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<div class="list card equino-card" ng-repeat="i in items">
+	    	<div ui-sref="veryHorse.mundoEquinoItem({id:i.$id})" class="item item-image">
+	    		<img src="{{i.picture}}">
+	    	</div>
+		   	<a ui-sref="veryHorse.mundoEquinoItem({id:i.$id})" class="equino-list-item-title" ng-bind-html="getTitle(i)"></a>
+	    	<div class="equino-list-item-content">
+	    		<span ng-bind-html="getExcerpt(i)"></span>
+	    		<a ui-sref="veryHorse.mundoEquinoItem({id:i.$id})">{{'LEER' | translate}}</a>
+	    	</div>
+	    	
+    	</div>
+    </ion-content>
+</ion-view>

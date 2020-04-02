@@ -1,0 +1,67 @@
+~<ion-view title="{{title}}" hide-back-button="false" id="page-newDemand">
+    <ion-content padding="false" class="has-header">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<div class="list-tabs row">
+    		<div class="list-tabs-item col-33 border-right" ng-click="changeList('pending')" ng-class="{'active':activeList=='pending'}">
+    			<span>{{'PENDIENTE' | translate}}</span>
+    		</div>
+    		<div class="list-tabs-item col-33 border-right" ng-click="changeList('confirmed')" ng-class="{'active':activeList=='confirmed'}">
+    			<span>{{'CONFIRMADAS' | translate}}</span>
+    		</div>
+            <div class="list-tabs-item col-33" ng-click="changeList('sent')" ng-class="{'active':activeList=='sent'}">
+    			<span>{{'SENT' | translate}}</span>
+    		</div>
+    	</div>
+    	<ul class="list-tabs-items list" ng-show="activeList == 'pending'">
+    		<li class="item center" ng-show="pendings.length == 0">{{'NO_RESUL' | translate}}</li>
+    	    <li ui-sref="veryHorse.myDemandsItem({id:i.$id})" class="item" ng-repeat="i in pendings">
+				<p>
+					<countryflag ng-if="i.pickCountry" country="{{i.pickCountry.toLowerCase()}}">&#32;{{i.pickCityName}}</countryflag>
+					<!-- If not exist i.pickCountry only show i.pickCityName -->
+					<span ng-if="i.pickCountry == '' && i.pickCityName != ''">{{i.pickCityName}}</span>
+					&#32;&#62;&#32;
+					<countryflag ng-if="i.deliverCountry" country="{{i.deliverCountry.toLowerCase()}}">&#32;{{i.deliverCityName}}</countryflag>
+					<!-- If not exist i.deliverCountry only show i.deliverCityName -->
+					<span ng-if="i.deliverCountry == '' && i.deliverCityName != ''">{{i.deliverCityName}}</span>
+				</p>
+				<p>{{i | demandTitleCarrier}}</p>
+				<span ng-show="i.proposals.length > 0" class="badge badge-assertive">{{i.proposals.length}}</span>
+			</li>
+    	</ul>
+    	<ul class="list-tabs-items list" ng-show="activeList == 'confirmed'">
+			<li class="item center" ng-show="confirmed.length == 0">{{'NO_RESUL' | translate}}</li>
+    	    <li ui-sref="veryHorse.myDemandsItem({id:i.$id})" class="item" ng-repeat="i in confirmed">
+				<p>
+					<countryflag ng-if="i.pickCountry" country="{{i.pickCountry.toLowerCase()}}">&#32;{{i.pickCityName}}</countryflag>
+					<!-- If not exist i.pickCountry only show i.pickCityName -->
+					<span ng-if="i.pickCountry == '' && i.pickCityName != ''">{{i.pickCityName}}</span>
+					&#32;&#62;&#32;
+					<countryflag ng-if="i.deliverCountry" country="{{i.deliverCountry.toLowerCase()}}">&#32;{{i.deliverCityName}}</countryflag>
+					<!-- If not exist i.deliverCountry only show i.deliverCityName -->
+					<span ng-if="i.deliverCountry == '' && i.deliverCityName != ''">{{i.deliverCityName}}</span>
+				</p>
+				<p>{{i | demandTitleCarrier}}</p>
+			</li>
+    	</ul>
+        <ul class="list-tabs-items list" ng-show="activeList == 'sent'">
+			<li class="item center" ng-show="sent.length == 0">{{'NO_RESUL' | translate}}</li>
+    	    <li ui-sref="veryHorse.myDemandsItem({id:i.$id})" class="item" ng-repeat="i in sent track by $index">
+				<p>
+					<countryflag ng-if="i.pickCountry" country="{{i.pickCountry.toLowerCase()}}">&#32;{{i.pickCityName}}</countryflag>
+					<!-- If not exist i.pickCountry only show i.pickCityName -->
+					<span ng-if="i.pickCountry == '' && i.pickCityName != ''">{{i.pickCityName}}</span>
+					&#32;&#62;&#32;
+					<countryflag ng-if="i.deliverCountry" country="{{i.deliverCountry.toLowerCase()}}">&#32;{{i.deliverCityName}}</countryflag>
+					<!-- If not exist i.deliverCountry only show i.deliverCityName -->
+					<span ng-if="i.deliverCountry == '' && i.deliverCityName != ''">{{i.deliverCityName}}</span>
+				</p>
+				<p>{{i | demandTitleCarrier}}</p>
+				<p>{{'PRICE_IN_EURO' | translate}}: {{i.amount}}&euro; {{i.tripTitle}}</p>
+			</li>
+    	</ul>
+    </ion-content>
+</ion-view>

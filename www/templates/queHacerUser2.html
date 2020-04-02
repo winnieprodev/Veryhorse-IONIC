@@ -1,0 +1,16 @@
+<ion-view title="{{'QUE_DESEA_HACER' | translate}}" hide-back-button="true" id="page-register">
+    <ion-content id="que-hacer" padding="true" class="has-header demand-form">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<div class="form-90">
+            <label class="center">{{'QUE_DESEA_HACER' | translate}}</label>
+            
+            <button ui-sref="veryHorse.newDemand"   class="button button-demand button-vh button-80">{{'TRASLADO_NEW' | translate}}</button>
+            <button ui-sref="veryHorse.mundoEquino" class="button button-demand button-vh button-80">{{'VER' | translate}} {{'NOTICIAS' | translate}}</button>
+            <button ui-sref="veryHorse.compartir"   class="button button-demand button-vh button-80">{{'ENVIAR_AMIGO' | translate}}</button>
+        </div>
+    </ion-content>
+</ion-view>

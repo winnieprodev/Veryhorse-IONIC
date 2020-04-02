@@ -1,0 +1,25 @@
+<ion-view title="{{'VALOR_TRANS' | translate}}" id="page4">
+    <ion-content id="emergencias" padding="true" class="has-header">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<div class="form-section" ng-style="{'opacity':contactSent?'0':'1'}">
+    		<p>{{'SERVICIO' | translate}} {{valoracion.transName}} {{'SERVICIO2' | translate}}: </p>
+    		<p>{{valoracion.demandName}}</p>
+    		<p>{{'SELECCIONE' | translate}}</p>
+	    	<form class="vh-form">
+	    		<ionic-ratings ratingsobj='ratingsObject' index='0' style="font-size: 50px;margin-bottom: 20px;"></ionic-ratings>
+                <label>{{'DESCRIPCION' | translate}}</label>
+	    		<textarea name="explicacion" ng-model="userVal.desc" placeholder="" ></textarea>
+	    		<div class="form-error" ng-style="{'opacity':formErrors?'1':'0'}" >{{'OBLIGATORIO2' | translate}}</div>
+	    		<button ng-click="valorar()" class="button button-vh">{{'ENVIAR2' | translate}}</button>
+	    	</form>
+    	</div>
+    	<div class="form-section" ng-style="{'opacity':contactSent?'1':'0', 'z-index':contactSent?'2':'-1'}">
+    		<p>{{'VALORACION2' | translate}</p>
+    		<p>{{'GRACIAS2' | translate}}</p>
+    	</div>
+    </ion-content>
+</ion-view>

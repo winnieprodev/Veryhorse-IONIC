@@ -1,0 +1,34 @@
+<ion-view title="{{'REGISTRO_G' | translate}}" hide-back-button="true" id="page-register">
+    <ion-content id="register" padding="true" class="has-header">
+        <div class="form-70">
+            <div class="buttons">
+                <button ui-sref="veryHorse.registerUser" ng-click="selected.propietarioSelected = true" class="button button-img" ng-disabled="selected.transportistaSelected">
+                    <img ng-src="img/propietario_{{lang}}.png" ng-class="{'img-button-on':!selected.propietarioSelected || selected.transportistaSelected}"/>
+                    <img ng-src="img/propietario_cargando_{{lang}}.png" ng-class="{'img-button-on':selected.propietarioSelected && !selected.transportistaSelected}"/>
+                </button>
+                <button ui-sref="veryHorse.registerTrans" ng-click="selected.transportistaSelected = true" class="button button-img" ng-disabled="selected.propietarioSelected">
+                    <img ng-src="img/transportista_{{lang}}.png" ng-class="{'img-button-on':!selected.transportistaSelected || selected.propietarioSelected}"/>
+                    <img ng-src="img/transportista_cargando_{{lang}}.png" ng-class="{'img-button-on':selected.transportistaSelected && !selected.propietarioSelected}"/>
+                </button>
+            </div>
+        </div>
+
+
+    	<!--<div class="form-70">
+    		
+    		<div class="buttons">
+				<button ng-click="selectLang('es')" class="button button-img button-inline">
+                    <img src="img/bandera_es.png" ng-class="{'img-button-on':!languageSelected || lang !== 'es'}"/>
+                    <img src="img/bandera_cargando_es.png" ng-class="{'img-button-on':languageSelected && lang=='es'}"/>
+                </button>
+                <button ng-click="selectLang('en')" class="button button-img button-inline">
+                    <img src="img/bandera_en.png" ng-class="{'img-button-on':!languageSelected || lang !== 'en'}"/>
+                    <img src="img/bandera_cargando_en.png" ng-class="{'img-button-on':languageSelected && lang=='en'}"/>
+                </button>
+			</div>
+			
+			<button ui-sref="veryHorse.registerUser"  class="button button-wide button-vh">{{'USUARIO' | translate}}</button>
+			<button ui-sref="veryHorse.registerTrans" class="button button-wide button-vh-green">{{'TRANSPORTISTA' | translate}}</button>
+    	</div>-->
+    </ion-content>
+</ion-view>

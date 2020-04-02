@@ -1,0 +1,24 @@
+<ion-view title="{{'PRESENTACION' | translate}}" hide-back-button="true" id="page5">
+    <ion-content id="presentacion" padding="true" on-swipe-left="showTab(currentTab+1)" on-swipe-right="showTab(currentTab-1)">
+    	<div class="steps">
+    		<div class="step" ng-repeat="t in tabs" ng-class="{'current':currentTab == $index, 'prev':currentTab > $index , 'next': currentTab<$index}">
+    			<div class="step-picture" style="background-image: url('img/presentacion/{{t.picture}}')"></div>
+                <div class="step-title" ng-bind-html="t.title"></div>
+                <div class="step-text" ng-bind-html="t.text"></div>
+    		</div>
+    	</div>
+    </ion-content>
+</ion-view>
+<ion-footer-bar>
+    <div class="steps-dots">
+        <!--<div class="saltar-presentacion">
+            <a ng-click="start()" ng-if="currentTab < tabs.length-1">{{'SALTAR' | translate}}</a>
+        </div>-->
+        <ul>
+            <li ng-repeat="t in tabs" ng-class="{'active':currentTab == $index}" ng-click="showTab($index)"></li>
+        </ul>
+          <a class="arrow arrow-left"  ng-class="{'disabled':currentTab == 0}" ng-click="showTab(currentTab-1)"><i class="icon ion-ios-arrow-left"></i></a>
+          <a class="arrow arrow-right" ng-if="currentTab < tabs.length-1" ng-click="showTab(currentTab+1)"><i class="icon ion-ios-arrow-right"></i></a>
+          <button ng-click="start()" id="start-button" ng-if="currentTab == tabs.length-1" class="button button-vh">{{'COMENZAR' | translate}}</button>
+    </div>
+</ion-footer-bar>

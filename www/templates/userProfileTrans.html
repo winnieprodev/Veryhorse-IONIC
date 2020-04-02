@@ -1,0 +1,129 @@
+<ion-view title="{{'MI_CUENTA' | translate}}" hide-back-button="true" id="page-newDemand">
+    <ion-content padding="true" class="has-header">
+        <div ng-if="banner != null">
+            <div ng-click="openBanner()" class="banner-block">
+                <img ng-src="{{banner.image}}" class="banner-img">
+            </div>
+        </div>
+    	<div class="form-section" ng-style="{'display':formSaved?'none':'block'}">
+	    	<form class="vh-form register-form">
+				<div class="form-70">
+
+	 		   		<label>{{'NOMBRE_E' | translate}}*</label>
+		       		<input type="text" 		name="apellidos" 		ng-model="formData.name_empresa" />
+	 		   		<div class="form-error" ng-style="{'opacity':formErrors.name_empresa?'1':'0','line-height':formErrors.name_empresa?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+		    		<div class="form-input-group">
+		    			<label class="w40">CIF/NIF*</label>
+		    			<label class="w55">{{'IDIOMA' | translate}}*</label>
+		    		</div>
+
+		    		<div class="form-input-group2">
+		    			<input class="w40" type="text" name="numero_identificacion" ng-model="formData.numero_identificacion"/>
+			       		<select class="w55" name="idioma" ng-model="formData.idioma" >
+							<option value="" selected>{{'IDIOMA' | translate}}</option>
+							<option ng-repeat="i in idiomas" value="{{i.code}}" ng-selected="i.code == formData.idioma" ng-bind-html="i.name"></option>
+						</select>
+		    		</div>
+		    		<div class="form-error" ng-style="{'opacity':formErrors.numero_identificacion?'1':'0','line-height':formErrors.numero_identificacion?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+		    		<div class="form-error" ng-style="{'opacity':formErrors.idioma?'1':'0','line-height':formErrors.idioma?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+
+		    		<label>{{'DIRECCION_COMPLETA' | translate}}*</label>
+		       		<input type="text" 	name="Dirección" ng-model="formData.address" />
+		       		<div class="form-error" ng-style="{'opacity':formErrors.address?'1':'0','line-height':formErrors.address?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+
+					<div class="form-input-group">
+					<label class="w55">{{'POBLACION' | translate}}*</label>
+					<label class="w40">{{'CODIGO2' | translate}}*</label>
+
+					</div>
+
+					<div class="form-input-group2">
+					<input class="w55" type="text" 	name="Población" 	ng-model="formData.town" />
+					<input class="w40" type="number" 		name="Código postal" ng-model="formData.cp" />
+					</div>
+					<div class="form-error" ng-style="{'opacity':formErrors.town?'1':'0','line-height':formErrors.town?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+					<div class="form-error" ng-style="{'opacity':formErrors.cp?'1':'0','line-height':formErrors.cp?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+
+
+					<label>{{'PAIS' | translate}}*</label>
+					<select name="pais" ng-model="formData.country">
+						<option value="" selected>{{'PAIS' | translate}}</option>
+						<option ng-repeat="c in countries" value="{{c.nombre}}" ng-selected="c.$id == formData.country" ng-bind-html="c.nombre"></option>
+					</select>
+		    		<div class="form-error" ng-style="{'opacity':formErrors.country?'1':'0','line-height':formErrors.country?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+
+		    		<div class="form-input-group">
+						<label class="w40">{{'PREFIJO' | translate}}</label>
+						<label class="w55">{{'TELEFONO_F' | translate}}</label>
+		    		</div>
+
+					<div class="form-input-group2">
+						<select class="w40" name="telef-fij" ng-model="formData.prefixFix" >
+							<option value="" selected>{{'PREFIJO' | translate}}</option>
+							<option ng-repeat="c in (countries | orderBy:'phone_code')" value="{{'+'+c.phone_code}}" ng-selected="c.phone_code == '+'+formData.prefixFix" ng-bind-html="'+'+c.phone_code"></option>
+						</select>
+
+		    			<input class="w55" type="number" name="telef-fij" ng-model="formData.phoneFix"/>
+		    		</div>
+		    		<div class="form-error" ng-style="{'opacity':formErrors.phoneFix?'1':'0','line-height':formErrors.phoneFix?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+		    		
+					<div class="form-input-group">
+						<label class="w40">{{'PREFIJO' | translate}}*</label>
+						<label class="w55">{{'TELEFONO_M' | translate}}*</label>
+		    		</div>
+
+					<div class="form-input-group2">
+						<select class="w40" name="telef-mov" ng-model="formData.prefixMob">
+							<option value="" selected>{{'PREFIJO' | translate}}</option>
+							<option ng-repeat="c in (countries | orderBy:'phone_code')" value="{{'+'+c.phone_code}}" ng-selected="c.phone_code == '+'+formData.prefixMob" ng-bind-html="'+'+c.phone_code"></option>
+						</select>
+
+		    			<input class="w55" type="number" 		name="telef-mov" 	ng-model="formData.phoneMob" />
+		    		</div>
+		    		<div class="form-error" ng-style="{'opacity':formErrors.phoneMob?'1':'0','line-height':formErrors.phoneMob?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+		    		<label>Web</label>
+		    		<input type="text" 	name="web" 	ng-model="formData.web" />
+
+					<label>{{'AREA_T' | translate}}</label>
+					<tags-input ng-model="formData.paises" add-from-autocomplete-only="true" display-property="nombre" key-property="iso2">
+				      <auto-complete source="loadCountries($query)"></auto-complete>
+				    </tags-input>
+				    <p></p> 
+				    <div class="form-error" ng-style="{'opacity':formErrors.paises?'1':'0','line-height':formErrors.paises?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+
+		    		<label>Email</label>
+					<div class="form-input-group">
+						<input type="email" name="email" ng-model="formData.email" 	placeholder="" readonly="readonly" disabled="disabled" />
+					</div>
+
+					<label>{{'CONTRASENA' | translate}}</label>
+					<div class="form-input-group">
+						
+						<input type="password" 	name="password" ng-model="formData.password" />
+						<div class="form-error" ng-style="{'opacity':formErrors.password?'1':'0','line-height':formErrors.password?'18px':'0'}" >{{'OBLIGATORIO' | translate}}</div>
+					</div>
+
+					<label>{{'CONFIRMAR2' | translate}}</label>
+					<div class="form-input-group">
+						<input type="password" 	name="confirmPassword" 	ng-model="formData.confirmPassword" />
+						<div class="form-error" ng-style="{'opacity':formErrors.confirmPasswordCoinciden?'1':'0','line-height':formErrors.confirmPasswordCoinciden?'18px':'0'}" >{{'CONTRASENA_CAMBIADA_EXITO' | translate}}</div>
+						<div class="form-error" ng-style="{'opacity':formErrors.login_again?'1':'0','line-height':formErrors.login_again?'18px':'0'}" >{{'LOGIN_AGAIN' | translate}}</div>
+					</div>	
+					<button ng-click="send()" class="button button-vh">{{'CONFIRMAR' | translate}}</button>
+				</div>
+				<div class="form-70">
+					<button ng-click="deleteAccount()" class="button button-vh">{{'ELIMINAR_CUENTA' | translate}}</button>
+				</div>
+	    	</form>
+    	</div>
+    	<div class="form-section form-section-success" ng-style="{'display':formSaved?'block':'none'}">
+    		<p>{{'EXITO2' | translate}}</p>
+    	</div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,48 @@
+#mundo-equino{
+	.padding .card{
+		&.equino-card{
+			background-color:$green_bg;
+			margin: 20px 20px 40px 20px;
+			padding-bottom: 30px;
+			box-shadow: none;
+			border: none;
+			border-bottom: 1px solid $green_title;
+
+			&:last-child{
+				border:none;
+			}
+
+			.item{
+				background-color:$green_bg;
+				border:none;
+			}
+
+			.equino-list-item-title{
+				display:block;
+				margin: 10px 0 5px 0;
+				color: $green_title;
+				font-size: $title_size;
+				text-decoration: none;
+				font-weight: bold;
+			}
+
+			.equino-list-item-content{
+				font-size: $desc_size;
+				line-height: 19px;
+				color:$white;
+				text-align:justify;
+
+				a{
+					color: $green_title;
+					text-decoration: none;
+					font-weight: bold;
+				}
+
+				img{
+					max-width: 100%;
+				}
+			}
+		}	
+	}
+}
+

@@ -1,0 +1,49 @@
+<ion-side-menus enable-menu-with-back-views="true" ng-style="{'opacity':renderView?'1':'0'}">
+    <ion-side-menu-content drag-content="false">
+        <ion-nav-bar class="bar-vh">
+            <ion-nav-back-button></ion-nav-back-button>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-menu-vh ion-navicon" menu-toggle="right" ng-click="rs.refreshBadge()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="vh"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="right" id="vh" class="vh-side-menu">
+        <ion-header-bar class="bar-vh">
+            <div class="title">VeryHorse</div>
+        </ion-header-bar>
+        <ion-content padding="false" class="side-menu-right has-header " id="veryhorse-menu-box">
+            <ion-list id="veryHorse-null" ng-if="!rs.user.userData.bloqueado">
+                <ion-item ng-if="rs.user && rs.user.userData.type === 'user'"                                          id="veryHorse-list-item8" ui-sref="veryHorse.newDemand"            menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.newDemand'}"><img id="destacada" src="img/menu/nueva_demanda.png" /><div class="ion-item-icontext"> {{'NEW_DEMANDA' | translate}}</div></ion-item>
+
+                <ion-item ng-if="rs.user && rs.user.userData.type === 'user'"                                          id="veryHorse-list-item8" ui-sref="veryHorse.myDemands"            menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.myDemands'}"><img id="destacada" src="img/menu/mis_demandas.png" /><div class="ion-item-icontext"> {{'MI_DEMANDA' | translate}} </div><span ng-show="rs.menuProposalsCount > 0" class="badge badge-assertive">{{rs.menuProposalsCount}}</span></ion-item>
+                               
+                <ion-item ng-if="rs.user && rs.user.userData.type === 'transportista' && rs.user.userData.aprobado"    id="veryHorse-list-item8" ui-sref="veryHorse.listDemands"          menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.listDemands'}"><img id="destacada" src="img/menu/mis_demandas.png" /><div class="ion-item-icontext"> {{'TRASLADO' | translate}} </div><span ng-show="rs.menuDemandsCount > 0" class="badge badge-assertive">{{rs.menuDemandsCount}}</span></ion-item>
+
+                <ion-item ng-if="rs.user && rs.user.userData.type === 'user'" id="veryHorse-list-item5" ui-sref="veryHorse.userProfile"          menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.userProfile'}"><img id="destacada" src="img/menu/mi_cuenta.png" /><div class="ion-item-icontext"> {{'MI_CUENTA' | translate}}</div></ion-item>
+                <ion-item ng-if="rs.user && rs.user.userData.type === 'transportista' && rs.user.userData.aprobado" id="veryHorse-list-item5" ui-sref="veryHorse.userProfileTrans"     menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.userProfileTrans'}"><img id="destacada" src="img/menu/mi_cuenta.png" /><div class="ion-item-icontext">{{'MI_CUENTA' | translate}}</div></ion-item>
+                <ion-item ng-if="rs.user && rs.user.userData.type === 'user'" id="veryHorse-list-item5" ui-sref="veryHorse.valoraciones"         menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.valoraciones'}"><img id="destacada" src="img/menu/valoraciones.png" /><div class="ion-item-icontext">{{'VALORACION' | translate}}</div><span ng-show="rs.pendingValoracionesCount > 0" class="badge badge-assertive">{{rs.pendingValoracionesCount}}</span></ion-item>
+                 
+                <ion-item ng-if="rs.user && rs.user.userData.type === 'transportista' && rs.user.userData.aprobado"    id="veryHorse-list-item5" ui-sref="veryHorse.valoracionesTrans"    menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.valoracionesTrans'}"><img id="destacada" src="img/menu/valoraciones.png" /><div class="ion-item-icontext">{{'VALORACION' | translate}}</div></ion-item>
+                <ion-item ng-if="!rs.user" id="veryHorse-list-item4" ui-sref="veryHorse.login"                menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.login'}"> <img id="destacada" src="img/menu/mi_cuenta.png" /><div class="ion-item-icontext">{{'LOGIN' | translate}}</div></ion-item>   
+                <!-- hotels -->
+                <ion-item id="veryHorse-list-item8" ui-sref="veryHorse.mapHotels" menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.mapHotels'}"><img id="destacada" src="img/menu/hotels.png" /><div class="ion-item-icontext"> {{'HOTELS' | translate}}</div></ion-item>
+                <ion-item id="veryHorse-list-item1" ui-sref="veryHorse.contacto"             menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.contacto'}"><img id="destacada" src="img/menu/contacto.png" /><div class="ion-item-icontext">{{'CONTACTO' | translate}}</div></ion-item>
+                
+                <!--<ion-item ng-if="rs.user && (rs.user.userData.type !== 'transportista' || rs.user.userData.aprobado)"  id="veryHorse-list-item3" ui-sref="veryHorse.emergencias24h"       menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.emergencias24h'}"><img id="destacada" src="img/menu/emergencias.png" /><div class="ion-item-icontext">{{'EMERGENCIA' | translate}}</div></ion-item>-->
+                <ion-item id="veryHorse-list-item2" ui-sref="veryHorse.mundoEquino"          menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.mundoEquino'}"><img id="destacada" src="img/menu/noticias.png" /><div class="ion-item-icontext"> {{'MENU_ME' | translate}}</div></ion-item>
+                <ion-item ng-if="rs.user && rs.user.userData.aprobado" id="veryHorse-list-item1" ui-sref="veryHorse.compartir"            menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.compartir'}"><img id="destacada" src="img/menu/compartir.png" /><div class="ion-item-icontext">{{'COMPARTIR' | translate}}</div></ion-item>
+                <ion-item id="veryHorse-list-item7" ui-sref="veryHorse.presentacion" menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.presentacion'}"><img id="destacada" src="img/menu/presentacion.png" /><div class="ion-item-icontext">{{'PRESENTACION' | translate}}</div></ion-item>
+                <!--<ion-item id="veryHorse-list-item7" ui-sref="veryHorse.comoFunciona"         menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.comoFunciona'}">¿Cómo funciona?</ion-item>-->
+                <!--<ion-item id="veryHorse-list-item7" ui-sref="veryHorse.comoFunciona"         menu-close="" ng-class="{'active':rs.currentState == 'veryHorse.comoFunciona'}"><img id="destacada" src="img/menu/como_funciona.png" /><div class="ion-item-icontext">{{'VERY' | translate}}</div></ion-item>-->
+                <ion-item ng-if="rs.user"                                                                              id="veryHorse-list-item6" href="#" ng-click="logout()"             menu-close="" ><img id="destacada" src="img/menu/salir.png" /><div class="ion-item-icontext">{{'SALIR' | translate}}</div></ion-item>
+            </ion-list>
+            <ion-list id="veryHorse-null" ng-if="rs.user.userData.bloqueado">
+                <ion-item ng-if="rs.user"   id="veryHorse-list-item6" href="#" ng-click="logout()"        menu-close="" ><img id="destacada" src="img/menu/salir.png" /><div class="ion-item-icontext">{{'SALIR' | translate}}</div></ion-item>
+            </ion-list>
+            <ion-list id="appVersion">
+                <ion-item id="veryHorse-helpSection" ui-sref="veryHorse.helpSection" menu-close="" ><img id="destacada" src="img/menu/appversion.png" /><div class="ion-item-icontext">{{'HELP' | translate}}</div></ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
